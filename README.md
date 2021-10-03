@@ -17,10 +17,44 @@
 6. run server
    -> python manage.py runserver 8000
 
-7. before run server , model to database
-   -> migrate takes care about which database to create specified in setting.py
+7. before run server | Model to Database
+   -> # Makemigrations reads all models.py -> creates/evolves the migration files -> guide by settings.py
+   -> # Migrate reads all migartions folders in all apps -> creates/evolves tables in db.
    -> python manage.py migrate
    -> python manage.py makemigrations
 
 8. to login backend, we need to create a superuser
    -> python manage.py createsuperuser
+
+9. Test sql album,artist,genre,track
+
+   - sqlite -> sqlite3 db.sqlite
+   - tables -> .tables
+   - schema -> .schema [table_name]
+
+10. Run sql command in terminal
+    - python manage.py shell
+    - from Shortner.models import Artist,Genre,Album,Track;
+    - Insert new Artist
+      - zep = Artist(name='Rabin Phaiju')
+      - zep.save()
+      - zep.id
+    - Look the talbe
+      - Artist.objects.values()
+    - Insert new Album
+      - made = Album(title='WHo made it',artist=zep)
+      - made.save()
+    - Insert new Genre
+      - rock = Genre(name='Metal')
+      - rock.save()
+    - Insert new Track
+      - track_1 = Track(title='Black dog',rating=5,length = 300,count=6,album=made,genre=rock)
+    - print track and foreignkey
+      - first_track = Track.objects.values()
+      - print(first_track)
+      - print(first_track.rating)
+      - print(first_track.genre)
+      - print(first_track.genre.name)
+      - print(first_track.album)
+      - print(first_track.album.artist)
+      - print(first_track.album.artist.name)
