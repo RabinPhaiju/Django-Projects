@@ -1,3 +1,4 @@
+from django.http.response import HttpResponse
 from django.shortcuts import render
 from rest_framework import viewsets, status
 from rest_framework.decorators import api_view
@@ -90,3 +91,6 @@ def get_form(request): # url
             messages.success(request, '{}'.format(checkIDExists(ID)))
     form=URLDataForm()
     return render(request, 'myform/form.html', {'form':form})
+
+def test(request):
+    return HttpResponse('<p>Test page</p>')
