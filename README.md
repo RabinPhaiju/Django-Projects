@@ -26,13 +26,20 @@
 8. to login backend, we need to create a superuser
    -> python manage.py createsuperuser
 
-9. Test sql album,artist,genre,track
+9. Model View Controller
 
-   - sqlite -> sqlite3 db.sqlite
-   - tables -> .tables
-   - schema -> .schema [table_name]
+   - We name the three basic functions of an application as follows
+   - Controller - The code that does the thinking and decision making
+   - View - The HTML, CSs, etc. which makes up the look and feel of the application
+   - Model - The persistent data that we keep in the data store
 
-10. Run sql command in terminal
+10. Test sql album,artist,genre,track
+
+    - sqlite -> sqlite3 db.sqlite
+    - tables -> .tables
+    - schema -> .schema [table_name]
+
+11. Run sql command in terminal
     - python manage.py shell
     - from Shortner.models import Artist,Genre,Album,Track;
     - Insert new Artist

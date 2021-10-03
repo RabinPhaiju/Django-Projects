@@ -10,8 +10,6 @@
 </head>
 
 <body>
-
-    <div class="row pt-1"></div>
     <div class="ccontainer-fluid">
         <div class="row">
             <div class="col-8">
@@ -26,13 +24,8 @@
                 </table>
 
             </div>
-
-
         </div>
     </div>
-
-
-
     <div class="container">
         <div class="row">
             <div class="col-4"></div>
@@ -47,46 +40,30 @@
                     </tr>
                 </table>
             </div>
-            <div class="col-3 text-right">
-            </div>
         </div>
-
     </div>
-
-
     <div class="container-fluid">
-
-
         <div class="row">
             <div class="col-3">
                 {% load static %}
                 <img src="{% static 'logo.png' %}" alt="Python" style="width:55%">
             </div>
 
-
-
-            <div class="col-6 mt-5 pt-5">
+            <div class="col-6 mt-2 pt-1">
                 <h1 class="text-center">
                     <p style="color: orange"><b>Short N'</b><i style="color: green"> Sweet</i></p>
-                    <hr class="mt-4 mb-4">
+                    <hr class="mt-2 mb-2">
                 </h1>
-                <div class="row pt-3"></div>
-
             </div>
         </div>
     </div>
-
-    <div class="col-3 bg-warning"></div>
     <div class="col-12 bg-warning">
         <div class="container bg-warning"></div>
 
         <div class="container bg-warning">
             <div class="row pt-5"></div>
             <div class="row pt-5"></div>
-            <div class="row pt-5"></div>
             <div class="row justify-content-center">
-
-
                 {% block content %}
                 <h2>
                     <form method="post">
@@ -108,26 +85,20 @@
             </div>
         </div>
     </div>
-
-
     <div class="col-18 bg-warning">
         <div class="container">
             <div class="row pt-5 bg-warning"></div>
-            <div class="row pt-4 bg-warning"></div>
             <div class="row pt-5"></div>
         </div>
     </div>
-    <div class="row pt-2"></div>
-    <h3 class="mt-4 text-center">
-        <p style="color: green"><b>Made</b><i style="color: orange"> with:</i></p>
-    </h3>
 
     <div class="container">
+        <h3 class="mt-4 text-center">
+            <p style="color: green"><b>Made</b><i style="color: orange"> with:</i></p>
+        </h3>
         <div class="col-3 text-center"></div>
         <div class="row pt-5"></div>
         <div class="row pt-2">
-
-
             <div class="col-sm text-center">
                 {% load static %}
                 <img src="{% static 'django.png' %}" alt="Django" style="width:30%">
@@ -141,7 +112,6 @@
                 <img src="{% static 'bootstrap.png' %}" alt="Bootstrap" style="width:30%">
             </div>
         </div>
-    </div>
     </div>
 </body>
 
