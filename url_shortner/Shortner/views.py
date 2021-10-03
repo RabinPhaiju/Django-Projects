@@ -50,12 +50,17 @@ def shortChars(): #Get Shortened URL endpoint
 def checkIDExists(ID): #Check to see if ID exists in DB
     sc=str(shortChars())
     Retreived_IDs=list(URLData.objects.values_list('URLID', flat=True))
+    ##################### CURD in ORM ##############
+    # URLData.objects.values() -> select all from table.
+    # delete from table -> URLData.objects.filter(ShortURL='facebook.com').delete()
+    # update from table -> URLData.objects.filter(ShortURL='facebook.com').update(ShortURL='messenger.com')
+    # select as orderd -> URLData.objects.values.order_by('ShortURL')
     if str(ID) in Retreived_IDs:
-        surl=URL_ID=URLData.objects.all().filter(URLID=str(ID))[0].ShortURL
+        surl=URL_ID=URLData.objects.all().filter(URLID=str(ID))[0].ShortURL # getting filtered data.
         mess=("Record Already Exists. The Shortened Link is: {}/{}".format(service_url,surl))
     else:
         U=URLData(URLID=ID, ShortURL=sc)
-        U.save()
+        U.save() # add to database
         mess=("Congratulatons! Your shortened URL is {}/{}".format(service_url,sc))
     return mess
 
