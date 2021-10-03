@@ -59,7 +59,7 @@ def checkIDExists(ID): #Check to see if ID exists in DB
         mess=("Congratulatons! Your shortened URL is {}/{}".format(service_url,sc))
     return mess
 
-def redirect_short_url(request, short_url):
+def redirect_short_url(request, short_url): #url
     redirect_url = service_url+'/shorten'
     try:
         URL_ID=URLData.objects.all().filter(ShortURL=short_url)[0].URLID
@@ -75,7 +75,7 @@ def appendPrefix(entry):
     else:
         return('https://'+str(entry))
 
-def get_form(request):
+def get_form(request): # url
     if request.method=='POST':
         form=URLDataForm(request.POST)
         if form.is_valid():

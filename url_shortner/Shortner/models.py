@@ -1,6 +1,6 @@
 from django.db import models
 
-class URLData(models.Model):
+class URLData(models.Model):# creating sql query
     URLID = models.CharField(max_length=1000)
     ShortURL = models.CharField(max_length=100)
 
