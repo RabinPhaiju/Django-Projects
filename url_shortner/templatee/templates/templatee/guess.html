@@ -1,4 +1,15 @@
 {% extends "templatee/base.html" %}
 {% block content %}
+<h3>Guessing Game</h3>
+<form method="post">
+    <p>
+        <label for="guess">Input Guess</label>
+        {% csrf_token %}
+        <input type="text" name="guess" size="40" id="guess">
+        <input type="submit">
+    </p>
+</form>
+{% if zap %}
 <p>Your guess was {{zap}}</p>
+{% endif %}
 {% endblock %}

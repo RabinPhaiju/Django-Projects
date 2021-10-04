@@ -5,7 +5,7 @@ app_name = 'templatee'
 
 urlpatterns = [
     path('simple/',views.simple,name='simple'),
-    path('guess/',views.guess,name='guess'),
+    path('guess/',views.GuessView.as_view(),name='guess'),
     path('special/',views.special,name='special'),
     path('loop/',views.loop,name='loop'),
     path('nested_object/',views.nested_object,name='nested_object'),

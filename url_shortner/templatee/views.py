@@ -1,14 +1,33 @@
 from django.shortcuts import redirect, render
+from django.utils import html
 from django.views import View
 
 # Create your views here.
 def simple(request):
     return render(request,'templatee/simple.html')
 
+class GuessView(View):
+    def get(self,request): # get request
+        return render(request,'templatee/guess.html',{'zap':None})
 
-def guess(request):
-    context = {'zap':'42'}
-    return render(request,'templatee/guess.html',context)
+    def post(self,request): # post request
+        guess = request.POST.get('guess')
+        msg = checkguess(guess)
+        return render(request,'templatee/guess.html',{'zap':msg})
+
+def checkguess(guess):
+    msg = False
+    if guess:
+        try:
+            if int(guess)<42:
+                msg = "Guess too low"
+            elif int(guess)>42:
+                msg = "Guess too high"
+            else:
+                msg = "Right"
+        except:
+            msg = 'Bad format for guess'+html.escape(guess)
+    return msg
 
 def special(request):
     context = {
