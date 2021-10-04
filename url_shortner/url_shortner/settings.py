@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-g&-krjc^_65+6blp2dtn4o*702atdf)lunq=j9voere^78i*-v
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+APP_NAME = 'Learn Django'
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
@@ -45,7 +46,8 @@ INSTALLED_APPS = [
     'gview',
     'bootstrap4',
     'laptop',
-
+    'automobile',
+   
     # Extensions - see requirements.txt
     'django_extensions',
     'crispy_forms'

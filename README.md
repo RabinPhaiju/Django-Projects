@@ -7,8 +7,7 @@
 3. cd [project_name]
 
 4. create new app ---> Django project is made up of one or more applications in folders.
-   -> django-admin startapp [app_name]
-   -> OR -> python manage.py startapp [app_name]
+   -> python manage.py startapp [app_name]
    -> after adding new app we have to include this in INSTALLED_APPS insilde settings.
 
 5. check error your code
