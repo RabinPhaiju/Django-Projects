@@ -1,0 +1,6 @@
+{% extends "templatee/base.html" %}
+{% block content %}
+<p>Your guess was {{zap}}</p>
+<p>Escaped {{txt}}</p>
+<p>Escaped not! {{txt|safe}}</p>
+{% endblock %}

@@ -6,5 +6,6 @@ from . import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('Shortner.urls'))
+    path('',include('Shortner.urls')),
+    path('templatee/',include('templatee.urls'))
 ]

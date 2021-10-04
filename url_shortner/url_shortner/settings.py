@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Shortner',
+    'templatee',
     'bootstrap4',
     'crispy_forms'
 ]
