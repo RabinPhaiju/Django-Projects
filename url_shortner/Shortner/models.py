@@ -1,5 +1,6 @@
 from django.db import models
 
+# Model URL
 class URLData(models.Model):# creating sql query
     URLID = models.CharField(max_length=1000)
     ShortURL = models.CharField(max_length=100)
@@ -8,7 +9,7 @@ class URLData(models.Model):# creating sql query
         template = '{0.URLID},{0.ShortURL}'
         return template.format(self)
 
-# Test
+# Model Song [Artist,Album,Genre,Track]
 class Artist(models.Model):
     name = models.CharField(max_length=200,db_index=True,help_text='Artist name')
 
@@ -39,6 +40,18 @@ class Track(models.Model):
     def __str__(self):
         return self.title
 
+# Model Library Book
+class Lang(models.Model):
+    name = models.CharField(max_length=200)
+
+class Book(models.Model):
+    title = models.CharField(max_length=200)
+    isbn = models.CharField(max_length=13)
+    lang = models.ForeignKey('Lang',on_delete=models.SET_NULL,null=True)
+
+class Instance(models.Model):
+    book = models.ForeignKey('Book',on_delete=models.CASCADE)
+    due_back = models.DateField(null=True,blank=True)
 
 # Model Field Types
 # AutoField
@@ -55,16 +68,17 @@ class Track(models.Model):
 # TextFleld
 # ImageField
 # IntegerField
-# GenericlIPAddressField ForeignKey
+# GenericlIPAddressField 
 # NullBoolean Field
 # BooleanField
 # TimeField
 # CharField
 # URLField
 # DateField
+# ForeignKey
 # ManyTolManyField
+# OneToOneField
 # DateTimeField
 # DecimalField
 # PositivelntegerField
-# OneToOneField
 # DurationField

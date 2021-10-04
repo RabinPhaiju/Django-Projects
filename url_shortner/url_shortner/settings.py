@@ -44,6 +44,10 @@ INSTALLED_APPS = [
     'templatee',
     'gview',
     'bootstrap4',
+    'laptop',
+
+    # Extensions - see requirements.txt
+    'django_extensions',
     'crispy_forms'
 ]
 

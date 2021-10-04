@@ -40,6 +40,7 @@
     - schema -> .schema [table_name]
 
 11. Run sql command in terminal
+
     - python manage.py shell
     - from Shortner.models import Artist,Genre,Album,Track;
     - Insert new Artist
@@ -65,3 +66,9 @@
       - print(first_track.album)
       - print(first_track.album.artist)
       - print(first_track.album.artist.name)
+    - filter or selecting
+      - track1 = Track.objects.get(pk=1)
+      - track1.title | track1.rating
+
+12. Load script
+    - python manage.py runscript [script_name]
