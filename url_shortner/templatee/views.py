@@ -8,6 +8,8 @@ def simple(request):
 
 class GuessView(View):
     def get(self,request): # get request
+        # post redirect get refresh
+        # mutiple post in refresh
         return render(request,'templatee/guess.html',{'zap':None})
 
     def post(self,request): # post request

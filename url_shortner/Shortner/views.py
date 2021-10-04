@@ -94,3 +94,11 @@ def get_form(request): # url
 
 def test(request):
     return HttpResponse('<p>Test page</p>')
+    
+def get_cookie(request):
+    resp = HttpResponse('<p>Setting cookies</p>')
+    resp.set_cookie('zap',42) # no expired date | until browswer close
+    resp.set_cookie('cake',2,max_age=1000) # seconds until expires
+    if('zap' in request.COOKIES):
+        resp = HttpResponse('<p> The zap value is '+request.COOKIES['zap']+'</p>')
+    return resp

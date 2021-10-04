@@ -7,5 +7,6 @@ urlpatterns = [
     path('',RedirectView.as_view(url='/shorten/')),
     path('test/',views.test,name='test'),
     path('shorten/',views.get_form,name='urlform'),
+    path('shorten/cookie',views.get_cookie,name='get_cookie'),
     path('<short_url>/',views.redirect_short_url,name='redirect_function')
 ]
