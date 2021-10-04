@@ -100,5 +100,13 @@ def get_cookie(request):
     resp.set_cookie('zap',42) # no expired date | until browswer close
     resp.set_cookie('cake',2,max_age=1000) # seconds until expires
     if('zap' in request.COOKIES):
-        resp = HttpResponse('<p> The zap value is '+request.COOKIES['zap']+'</p>')
+        resp = HttpResponse('<p> The cookie:zap value is '+request.COOKIES['zap']+'</p>')
     return resp
+
+def get_session(request):
+    num_visitors = request.session.get('num_visits',0)+1
+    request.session['num_visits']=num_visitors
+    if num_visitors > 4:
+        del(request.session['num_visits'])
+    
+    return HttpResponse('view session counts='+str(num_visitors))
