@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from django.views.generic import View
+from django.views import View
 
 # Create your views here.
 def simple(request):
