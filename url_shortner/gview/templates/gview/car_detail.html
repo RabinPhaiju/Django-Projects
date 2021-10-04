@@ -1,0 +1,10 @@
+{% extends "gview/base.html" %}
+{% block content %}
+<h1>Car {{car.name}}</h1>
+<p>
+    <a href={% url 'gview:cars' %}>back to car list</a>
+</p>
+<p>
+    <img height="300px" src="https://loremflickr.com/160/120/dog" alt={{car.name}}>
+</p>
+{% endblock %}

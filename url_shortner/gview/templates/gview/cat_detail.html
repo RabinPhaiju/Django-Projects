@@ -1,0 +1,11 @@
+{% extends "gview/base.html" %}
+{% block content %}
+<h1>Cat {{cat.name}}</h1>
+<p>
+    <a href={% url 'gview:cats' %}>back to cat list</a>
+</p>
+<p>
+    <img height="300px" src="https://www.sakaiger.com/images/2018-10-SakaiCar-Gingerman-Neon-Square.jpeg"
+        alt={{cat.name}}>
+</p>
+{% endblock %}

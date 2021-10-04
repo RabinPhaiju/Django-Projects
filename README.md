@@ -20,8 +20,8 @@
 7. before run server | Model to Database
    -> # Makemigrations reads all models.py -> creates/evolves the migration files -> guide by settings.py
    -> # Migrate reads all migartions folders in all apps -> creates/evolves tables in db.
-   -> python manage.py migrate
    -> python manage.py makemigrations
+   -> python manage.py migrate
 
 8. to login backend, we need to create a superuser
    -> python manage.py createsuperuser

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Shortner',
     'templatee',
+    'gview',
     'bootstrap4',
     'crispy_forms'
 ]
