@@ -90,7 +90,7 @@ def get_form(request): # url
             ID=base_decode(fullurladj.lower())
             messages.success(request, '{}'.format(checkIDExists(ID)))
     form=URLDataForm()
-    return render(request, 'myform/form.html', {'form':form})
+    return render(request, 'Shortner/form.html', {'form':form})
 
 def test(request):
     return HttpResponse('<p>Test page</p>')
