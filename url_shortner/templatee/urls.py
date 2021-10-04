@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 
+app_name = 'templatee'
+
 urlpatterns = [
     path('simple/',views.simple,name='simple'),
     path('guess/',views.guess,name='guess'),
@@ -8,5 +10,5 @@ urlpatterns = [
     path('loop/',views.loop,name='loop'),
     path('nested_object/',views.nested_object,name='nested_object'),
 
-    path('game/<slug:guess>',views.GameView.as_view())
+    path('game/<slug:guess>',views.GameView.as_view(),name='game')
 ]
