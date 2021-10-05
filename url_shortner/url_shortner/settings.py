@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'laptop',
     'automobile',
+    'myarticles',
    
     # Extensions - see requirements.txt
     'django_extensions',

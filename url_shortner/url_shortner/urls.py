@@ -11,5 +11,6 @@ urlpatterns = [
     path('templatee/',include('templatee.urls',namespace='template')),
     path('gview/',include('gview.urls')),
     path('laptop/',include('laptop.urls')),
-    path('automobile/',include('automobile.urls'))
+    path('automobile/',include('automobile.urls')),
+    path('myarticles/',include('myarticles.urls'))
 ]
