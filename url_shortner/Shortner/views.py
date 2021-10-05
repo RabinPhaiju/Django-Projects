@@ -11,6 +11,7 @@ from django.db import connection
 from . models import URLData
 from . forms import URLDataForm
 from . serializers import URLDataSerializers
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 import sqlite3
 import string
@@ -81,7 +82,7 @@ def appendPrefix(entry):
     else:
         return('https://'+str(entry))
 
-def get_form(request): # url
+def get_form(request): # url # convert to class so that we can add LoginRequiredMixin,
     if request.method=='POST':
         form=URLDataForm(request.POST)
         if form.is_valid():
