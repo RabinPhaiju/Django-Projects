@@ -5,29 +5,23 @@
     <title>{% block title %}{{ settings.APP_NAME }}{% endblock %}</title>
 
     <!-- Replace this value (42-42) with the one provided by the autograder -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="django-learn" content="42-42">
-
     <meta name="django-code" content="99999999">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
         crossorigin="anonymous">
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap-theme.min.css"
-        crossorigin="anonymous">
-
+        crossorigin="anonymous"> -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css"
         crossorigin="anonymous">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous"></script>
-
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
-
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" crossorigin="anonymous"></script>
-
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
-
     <meta name="django-version" content="2021-04-14">
 
     {% block head %} {% endblock %}
@@ -36,7 +30,41 @@
 
 <body>
     <div class="container">
-        {% block navbar %} {% endblock %}
+        <!-- {% block navbar %} {% endblock %} -->
+        <div class="bg-dark text-white">
+            <div class="row">
+                <div class="col-8">
+                </div>
+                <div class="col-3 text-right">
+                    <table align="right" style="width:10%">
+                        <tr>
+                            <th><a href="/accounts/login" style="color: orange">Login</a>
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="bg-dark text-white">
+            <div class="row">
+                <div class="col-10 text-center">
+                    <table style="width:100%">
+                        <tr>
+                            <th><a href="/" style="color: white">HOME</a></th>
+                            <th><a href="/templatee/game/200" style="color: white">Templatee</a></th>
+                            <th><a href="/gview/gview" style="color: white">Gview</a></th>
+                            <th><a href="cookie" style="color: white">Cookies</a></th>
+                            <th><a href="session" style="color: white">Session</a></th>
+                            <th><a href="/laptop/laptop" style="color: white">Laptop</a></th>
+                            <th><a href="/test" style="color: white">Form_Test</a></th>
+                            <th><a href="/automobile/main" style="color: white">Automobile</a></th>
+                            <th><a href="/myarticles/myarticles" style="color: white">Myarticles</a></th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
         {% block welcome %} {% endblock %}
         {% block messages %}
         {% if messages %}
@@ -48,6 +76,8 @@
         {% endif %}
         {% endblock %}
         {% block content %}
+        {% block content1 %}
+        {% endblock %}
         {% endblock %}
     </div>
     {% block footer %} {% endblock %}
