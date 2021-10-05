@@ -16,6 +16,7 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+APP_NAME = 'Learn Django'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -27,7 +28,6 @@ SECRET_KEY = 'django-insecure-g&-krjc^_65+6blp2dtn4o*702atdf)lunq=j9voere^78i*-v
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-APP_NAME = 'Learn Django'
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'laptop',
     'automobile',
     'myarticles',
-   
+    'home',
     # Extensions - see requirements.txt
     'django_extensions',
     'crispy_forms'
@@ -64,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'url_shortner.urls'
