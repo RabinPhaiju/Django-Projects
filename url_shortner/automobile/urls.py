@@ -1,6 +1,5 @@
 from django.urls import path
 from . import views
-from django.views.generic import TemplateView
 
 app_name = 'automobile'
 urlpatterns = [
@@ -14,4 +13,4 @@ urlpatterns = [
     path('lookup/<int:pk>/delete/', views.MakeDelete.as_view(), name='make_delete'),
 ]
 
-# Note that make_ and auto_ give us uniqueness within this application
+# Note that 'make_' and 'auto_' name tag gives us uniqueness within this application

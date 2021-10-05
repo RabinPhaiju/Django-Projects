@@ -11,7 +11,7 @@ from automobile.models import Auto, Make
 from automobile.forms import MakeForm
 
 # Create your views here.
-class MainView(LoginRequiredMixin, View):
+class MainView( View):
     def get(self, request):
         mc = Make.objects.all().count()
         al = Auto.objects.all()
@@ -20,7 +20,7 @@ class MainView(LoginRequiredMixin, View):
         return render(request, 'automobile/auto_list.html', ctx)
 
 
-class MakeView(LoginRequiredMixin, View):
+class MakeView( View):
     def get(self, request):
         ml = Make.objects.all()
         ctx = {'make_list': ml}
@@ -29,7 +29,7 @@ class MakeView(LoginRequiredMixin, View):
 
 # We use reverse_lazy() because we are in "constructor attribute" code
 # that is run before urls.py is completely loaded
-class MakeCreate(LoginRequiredMixin, View):
+class MakeCreate( View):
     template = 'automobile/make_form.html'
     success_url = reverse_lazy('automobile:all')
 
@@ -51,7 +51,7 @@ class MakeCreate(LoginRequiredMixin, View):
 # MakeUpdate has code to implement the get/post/validate/store flow
 # AutoUpdate (below) is doing the same thing with no code
 # and no form by extending UpdateView
-class MakeUpdate(LoginRequiredMixin, View):
+class MakeUpdate( View):
     model = Make
     success_url = reverse_lazy('automobile:all')
     template = 'automobile/make_form.html'
@@ -73,7 +73,7 @@ class MakeUpdate(LoginRequiredMixin, View):
         return redirect(self.success_url)
 
 
-class MakeDelete(LoginRequiredMixin, View):
+class MakeDelete( View):
     model = Make
     success_url = reverse_lazy('automobile:all')
     template = 'automobile/make_confirm_delete.html'
@@ -94,19 +94,19 @@ class MakeDelete(LoginRequiredMixin, View):
 # These views do not need a form because CreateView, etc.
 # Build a form object dynamically based on the fields
 # value in the constructor attributes
-class AutoCreate(LoginRequiredMixin, CreateView):
+class AutoCreate( CreateView):
     model = Auto
     fields = '__all__'
     success_url = reverse_lazy('automobile:all')
 
 
-class AutoUpdate(LoginRequiredMixin, UpdateView):
+class AutoUpdate( UpdateView):
     model = Auto
     fields = '__all__'
     success_url = reverse_lazy('automobile:all')
 
 
-class AutoDelete(LoginRequiredMixin, DeleteView):
+class AutoDelete( DeleteView):
     model = Auto
     fields = '__all__'
     success_url = reverse_lazy('automobile:all')
