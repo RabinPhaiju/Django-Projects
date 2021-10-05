@@ -10,7 +10,7 @@ class Article(models.Model):
             validators=[MinLengthValidator(2, "Title must be greater than 2 characters")]
     )
     text = models.TextField()
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE) # delte all articles associated with user if user gets deleted.
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

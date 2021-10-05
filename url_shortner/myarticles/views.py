@@ -14,7 +14,7 @@ class ArticleDetailView(OwnerDetailView):
 
 class ArticleCreateView(OwnerCreateView):
     model = Article
-    fields = ['title', 'text']
+    fields = ['title', 'text'] # updated and deleted date are not shown in input fields.
 
 
 class ArticleUpdateView(OwnerUpdateView):
@@ -23,4 +23,5 @@ class ArticleUpdateView(OwnerUpdateView):
 
 
 class ArticleDeleteView(OwnerDeleteView):
+    # By convention, template = 'myarticles/article_confirm_delete.html'
     model = Article

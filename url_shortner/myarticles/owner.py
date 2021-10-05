@@ -50,10 +50,11 @@ class OwnerDeleteView(LoginRequiredMixin, DeleteView):
     user's data.
     """
 
+    #overide
     def get_queryset(self):
         print('delete get_queryset called')
         qs = super(OwnerDeleteView, self).get_queryset()
-        return qs.filter(owner=self.request.user)
+        return qs.filter(owner=self.request.user) # where clause
 
 # References
 
