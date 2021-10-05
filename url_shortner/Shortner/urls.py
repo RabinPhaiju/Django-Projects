@@ -9,6 +9,7 @@ urlpatterns = [
     path('',RedirectView.as_view(url='/shorten/')),
     path('test/',views.test,name='test'),
     path('testform/',views.testform,name='testform'),
+    path('crispyform/', views.MyView.as_view(template_name='Shortner/crispyform.html'),name='crispyform'),
     path('shorten/',views.get_form,name='urlform'),
     path('shorten/cookie',views.get_cookie,name='get_cookie'),
     path('shorten/session',views.get_session,name='get_session'),

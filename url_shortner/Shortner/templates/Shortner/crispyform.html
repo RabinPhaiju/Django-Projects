@@ -1,15 +1,16 @@
 {% extends "base_bootstrap.html" %}
-{% block title %}Default form{% endblock %}
+{% block title %}Crispy form{% endblock %}
 {% block welcome %}
-<h1>This is a default test form</h1>
+<h1>This is a Crispy form</h1>
 {% endblock %}
 
 {% block content %}
 <p>
+    {% load crispy_forms_tags %}
 <form method="post">
     {% csrf_token %}
     <table>
-        {{form.as_table}}
+        {{form | crispy}}
     </table>
     <input type="submit" value="Submit">
     {% comment %} <input type="submit" onclick="window.location='{% url'shorten:test'  %}' ; return false;"
