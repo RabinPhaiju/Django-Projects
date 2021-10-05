@@ -10,6 +10,7 @@ from rest_framework.parsers import JSONParser
 from django.db import connection
 from . models import URLData
 from . forms import URLDataForm
+from . forms import TestForm
 from . serializers import URLDataSerializers
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
@@ -93,9 +94,6 @@ def get_form(request): # url # convert to class so that we can add LoginRequired
     form=URLDataForm()
     return render(request, 'Shortner/form.html', {'form':form})
 
-def test(request):
-    return HttpResponse('<p>Test page</p>')
-    
 def get_cookie(request):
     resp = HttpResponse('<p>Setting cookies</p>')
     resp.set_cookie('zap',42) # no expired date | until browswer close
@@ -111,3 +109,25 @@ def get_session(request):
         del(request.session['num_visits'])
     
     return HttpResponse('view session counts='+str(num_visitors))
+
+def test(request):
+    return HttpResponse('<p>Test is a page test.</br> <a href="/testform/">Test Form</a></p>')
+
+# Test form
+
+def testform(request):
+    if request.method=='POST':
+        form=TestForm(request.POST)
+        if form.is_valid():
+            print('name: ',form.cleaned_data['name'])
+        form = TestForm()
+    else:
+        old_data= {
+            'name':"rabin",
+            'age':26,
+            'dob':'1995-02-09'
+        }
+        # form = TestForm(old_data)
+        form = TestForm()
+    ctx = {'form':form}
+    return render(request,'Shortner/testform.html',ctx)

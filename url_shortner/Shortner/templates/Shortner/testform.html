@@ -1,0 +1,10 @@
+<p>
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table> 
+        <input type="submit" value="Submit">
+        {% comment %} <input type="submit" onclick="window.location='{% url'shorten:test'  %}' ; return false;" value="Cancel"> {% endcomment %}
+    </form>
+</p>
