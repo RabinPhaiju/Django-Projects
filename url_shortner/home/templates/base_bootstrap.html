@@ -11,10 +11,6 @@
     <meta name="django-code" content="99999999">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap-theme.min.css"
-        crossorigin="anonymous"> -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css"
         crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous"></script>
@@ -27,24 +23,10 @@
     {% block head %} {% endblock %}
 
 </head>
+{% load app_tags %}
 
 <body>
     <div class="container">
-        <!-- {% block navbar %} {% endblock %} -->
-        <div class="bg-dark text-white">
-            <div class="row">
-                <div class="col-8">
-                </div>
-                <div class="col-3 text-right">
-                    <table align="right" style="width:10%">
-                        <tr>
-                            <th><a href="/accounts/login" style="color: orange">Login</a>
-                            </th>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
         <div class="bg-dark text-white">
             <div class="row">
                 <div class="col-10 text-center">
@@ -59,12 +41,21 @@
                             <th><a href="/test" style="color: white">Form_Test</a></th>
                             <th><a href="/automobile/main" style="color: white">Automobile</a></th>
                             <th><a href="/myarticles/myarticles" style="color: white">Myarticles</a></th>
+
+                            {% if user.is_authenticated %}
+                            <th><img style="width: 25px;" src="{{ user|gravatar:60 }}" /></th>
+                            <th> <a href="{% url 'logout' %}?next={% url 'shorten:home' %}">Logout</a>
+                                {% else %}
+                            <th><a href="{% url 'login' %}?next={% url 'shorten:home' %}">Login</a>
+                                {% endif %}
+                            </th>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
 
+        {% block navbar %} {% endblock %}
         {% block welcome %} {% endblock %}
         {% block messages %}
         {% if messages %}

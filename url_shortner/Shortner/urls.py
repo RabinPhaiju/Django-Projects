@@ -6,7 +6,7 @@ from . import views
 # This is the home app for url_shortner
 app_name = 'shorten'
 urlpatterns = [
-    path('',RedirectView.as_view(url='/shorten/')),
+    path('',RedirectView.as_view(url='/shorten/'),name='home'),
     path('test/',views.test,name='test'),
     path('testform/',views.testform,name='testform'),
     path('crispyform/', views.MyView.as_view(template_name='Shortner/crispyform.html'),name='crispyform'),

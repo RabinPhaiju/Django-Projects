@@ -1,36 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <title>Base Template</title>
-</head>
-
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-4"></div>
-      <div class="col-5 text-center">
-        <table style="width:90%">
-          <tr>
-            <th><a href="/shorten" style="color: green">HOME</a></th>
-            <th><a href={% url 'template:game' 200 %} style="color: green">Game</a></th>
-            <th><a href={% url 'template:guess' %} style="color: green">Guess</a></th>
-            <th><a href={% url 'template:loop' %} style="color: green">Loop</a></th>
-            <th><a href={% url 'template:nested_object' %} style="color: green">Nest_obj</a></th>
-            <th><a href={% url 'template:special' %} style="color: green">special</a></th>
-          </tr>
-        </table>
-      </div>
+{% extends "base_bootstrap.html" %}
+{% block navbar %}
+<div class="container">
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-8 text-center">
+      <table style="width:90%">
+        <tr>
+          <th><a href={% url 'template:game' 200 %} style="color: green">Game</a></th>
+          <th><a href={% url 'template:guess' %} style="color: green">Guess</a></th>
+          <th><a href={% url 'template:loop' %} style="color: green">Loop</a></th>
+          <th><a href={% url 'template:nested_object' %} style="color: green">Nest_obj</a></th>
+          <th><a href={% url 'template:special' %} style="color: green">special</a></th>
+          <th><a href={% url 'template:templatee' %} style="color: green">TemplateView</a></th>
+        </tr>
+      </table>
     </div>
   </div>
-  <div class="container">
-    {% block content %}{% endblock %}
-  </div>
-</body>
-
-</html>
+</div>
+{% endblock %}
