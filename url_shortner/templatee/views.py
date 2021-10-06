@@ -1,3 +1,5 @@
+from django.http.response import HttpResponse, HttpResponseRedirect
+from django.utils.html import escape
 from django.shortcuts import redirect, render
 from django.utils import html
 from django.views import View
@@ -53,3 +55,18 @@ class GameView(View):
     def get(self,request,guess):
         x = {'guess':int(guess)}
         return render(request,'templatee/cond.html',x)
+
+class http_response(View):
+    def get(self,request):
+        response  = 'This is a http response text'
+        return HttpResponse(response)
+class url_get(View):
+    def get(self,request) :
+        response = """<html><body>
+        <p>Your guess was """+escape(request.GET['guess'])+"""</p>
+        </body></html>"""
+        return HttpResponse(response)
+
+class url_redirect(View):
+    def get(self,request):
+        return HttpResponseRedirect('https://www.google.com')
