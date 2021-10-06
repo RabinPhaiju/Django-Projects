@@ -70,4 +70,4 @@
       - track1.title | track1.rating
 
 12. Load script
-    - python manage.py runscript [script_name]
+    - python manage.py runscript [script_name] # without .py or folder_name
