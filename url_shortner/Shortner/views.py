@@ -97,11 +97,13 @@ def get_form(request): # url # convert to class so that we can add LoginRequired
     return render(request, 'Shortner/form.html', {'form':form})
 
 def get_cookie(request):
-    resp = HttpResponse('<p>Setting cookies</p>')
-    resp.set_cookie('zap',42) # no expired date | until browswer close
+    oldval = request.COOKIES.get('zap',None)
+    resp = HttpResponse('<p>Setting cookies.</p></br>The cookie:zap value is: '+str(oldval))
+    if oldval:
+        resp.set_cookie('zap',int(oldval)+1) # no expired date | until browswer close
+    else:
+        resp.set_cookie('zap',42) # no expired date | until browswer close
     resp.set_cookie('cake',2,max_age=1000) # seconds until expires
-    if('zap' in request.COOKIES):
-        resp = HttpResponse('<p> The cookie:zap value is '+request.COOKIES['zap']+'</p>')
     return resp
 
 def get_session(request):
