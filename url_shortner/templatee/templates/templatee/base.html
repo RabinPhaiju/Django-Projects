@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-4"></div>
-    <div class="col-8 text-center">
+    <div class="col-12 text-center">
       <table style="width:90%">
         <tr>
           <th><a href={% url 'template:game' 200 %} style="color: green">Game</a></th>
@@ -12,6 +12,9 @@
           <th><a href={% url 'template:nested_object' %} style="color: green">Nest_obj</a></th>
           <th><a href={% url 'template:special' %} style="color: green">special</a></th>
           <th><a href={% url 'template:templatee' %} style="color: green">TemplateView</a></th>
+          <th><a href={% url 'template:http_response' %} style="color: green">Http_response</a></th>
+          <th><a href='/templatee/url_get?guess=30' style="color: green">Url_get</a></th>
+          <th><a href={% url 'template:url_redirect' %} style="color: green">Google.com</a></th>
         </tr>
       </table>
     </div>
