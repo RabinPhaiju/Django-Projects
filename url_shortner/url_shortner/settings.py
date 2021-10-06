@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'automobile',
     'myarticles',
     'home',
+    'bookm2m',
     # Extensions - see requirements.txt
     'django_extensions',
     'crispy_forms'
