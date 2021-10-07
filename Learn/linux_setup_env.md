@@ -1,3 +1,5 @@
+# See url_shortner for learning
+
 # create env
 
     - mkvirtualenv django3 --python=/usr/bin/python3.8

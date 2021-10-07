@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'home',
     'bookm2m',
     'membershipm2m',
+    'pics',
     # Extensions - see requirements.txt
     'django_extensions',
     'crispy_forms'
