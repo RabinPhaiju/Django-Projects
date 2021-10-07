@@ -4,12 +4,14 @@ from django.urls.conf import include
 from Shortner import views
 from . import settings
 import os
+from django.contrib.auth import views as auth_views
 from django.conf.urls import url
 from django.views.static import serve
 
 urlpatterns = [
     path('admin/', admin.site.urls), # keep
     path('accounts/',include('django.contrib.auth.urls')),
+    url(r'^oauth/',include('social_django.urls',namespace='social')),  # Keep
     path('templatee/',include('templatee.urls',namespace='template')),
     path('gview/',include('gview.urls')),
     path('laptop/',include('laptop.urls')),
@@ -40,3 +42,18 @@ urlpatterns += [
         }
     ),
 ]
+
+# Switch to social login if it is configured - Keep for later
+try:
+    from . import github_settings
+    social_login = 'registration/login_social.html'
+    urlpatterns.insert(0,
+                       path('accounts/login/', auth_views.LoginView.as_view(template_name=social_login))
+                       )
+    print('Using', social_login, 'as the login template')
+except:
+    print('Using registration/login.html as the login template')
+
+# References
+
+# https://docs.djangoproject.com/en/3.0/ref/urls/#include
