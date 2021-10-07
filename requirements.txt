@@ -82,7 +82,7 @@ six==1.15.0
 smart-open==5.0.0
 sounddevice==0.4.2
 soupsieve==2.2.1
-sqlparse==0.4.1
+sqlparse>=0.4.2
 threadpoolctl==2.2.0
 tornado==6.1
 tqdm==4.62.2
