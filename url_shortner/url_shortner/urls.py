@@ -14,6 +14,7 @@ urlpatterns = [
     path('myarticles/',include('myarticles.urls')),
     path('home/',include('home.urls')),
     path('pics/',include('pics.urls')),
+    path('forum/',include('forums.urls')),
     path('',include('Shortner.urls')),
 
 ]
