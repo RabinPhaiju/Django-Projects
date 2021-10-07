@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'membershipm2m',
     'pics',
     'forums',
+    'chat',
     # Extensions - see requirements.txt
     'django_extensions',
     'crispy_forms'

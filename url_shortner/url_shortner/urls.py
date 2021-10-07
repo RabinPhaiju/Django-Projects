@@ -15,6 +15,7 @@ urlpatterns = [
     path('home/',include('home.urls')),
     path('pics/',include('pics.urls')),
     path('forum/',include('forums.urls')),
+    path('chat/',include('chat.urls')),
     path('',include('Shortner.urls')),
 
 ]
