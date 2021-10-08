@@ -58,13 +58,14 @@ INSTALLED_APPS = [
     'fav_products',
     'well',
     'rest_api',
+    'forum_tagme',
 
     # Extensions - see requirements.txt
     'django_extensions',
     'crispy_forms',
     'social_django',
     'rest_framework',
-
+    'taggit',
 ]
 
 CRISPY_TEMPLETE_PACK = 'bootstrap4'

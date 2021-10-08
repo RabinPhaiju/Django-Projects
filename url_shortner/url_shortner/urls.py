@@ -24,6 +24,8 @@ urlpatterns = [
     path('fav_products/',include('fav_products.urls')),
     path('well/',include('well.urls')),
     path('rest_api/',include('rest_api.urls')),
+    path('tagme/',include('forum_tagme.urls')),
+
     path('',include('Shortner.urls')),
 ]
 
