@@ -16,5 +16,7 @@ urlpatterns = [
 
     path('game/<slug:guess>',views.GameView.as_view(),name='game'),
 
-    path('templatee',TemplateView.as_view(template_name='templatee/templatee.html'),name='templatee')
+    path('templatee',TemplateView.as_view(template_name='templatee/templatee.html'),name='templatee'),
+
+    path('users', views.Listusers.as_view(),name='users'), 
 ]

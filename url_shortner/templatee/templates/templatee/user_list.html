@@ -1,0 +1,17 @@
+{% extends "templatee/base.html" %}
+{% block content %}
+<h1>List of users</h1>
+{% for user in ulist %}
+<p>{{user.name}} {{user.email}} </p>
+{% endfor %}
+<h4>Add a user select demo</h4>
+<form>
+    <select name="user_id">
+        <option value="0">-- Please Select --</option>
+        {% for user in ulist %}
+        <option value="{{user.id}}">{{ user.email }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit">
+</form>
+{% endblock %}

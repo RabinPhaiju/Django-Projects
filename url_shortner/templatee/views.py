@@ -1,8 +1,10 @@
 from django.http.response import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.html import escape
 from django.shortcuts import redirect, render
 from django.utils import html
 from django.views import View
+from django.contrib.auth.models import User
 
 # Create your views here.
 def simple(request):
@@ -70,3 +72,13 @@ class url_get(View):
 class url_redirect(View):
     def get(self,request):
         return HttpResponseRedirect('https://www.google.com')
+
+
+# list of users
+# https://wsvincent.com/django-referencing-the-user-model/
+class Listusers(LoginRequiredMixin,View):
+    def get(self,request):
+        ulist = User.objects.all()
+        ctx = { 'ulist' : ulist}
+        return render(request, 'templatee/user_list.html', ctx)
+
