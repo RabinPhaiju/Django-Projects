@@ -11,7 +11,7 @@ class CreateForm(forms.ModelForm):
 
     # Call this 'picture' so it gets copied from the form to the in-memory model
     # It will not be the "bytes", it will be the "InMemoryUploadedFile"
-    # because we need to pull out things like content_type
+    # because we need to pull out products like content_type
     picture = forms.FileField(required=False, label='File to Upload <= '+max_upload_limit_text)
     upload_field_name = 'picture'
 

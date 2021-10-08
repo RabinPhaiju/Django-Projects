@@ -21,6 +21,7 @@ urlpatterns = [
     path('pics/',include('pics.urls')),
     path('forum/',include('forums.urls')),
     path('chat/',include('chat.urls')),
+    path('fav_products/',include('fav_products.urls')),
     path('',include('Shortner.urls')),
 ]
 

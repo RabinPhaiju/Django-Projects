@@ -29,7 +29,7 @@
     <div class="container">
         <div class="bg-dark text-white">
             <div class="row">
-                <div class="col-10 text-center">
+                <div class="col-12 text-center">
                     <table style="width:100%">
                         <tr>
                             <th><a href="/" style="color: white">HOME</a></th>
@@ -44,6 +44,7 @@
                             <th><a href="/pics" style="color: white">Picture</a></th>
                             <th><a href="/forum" style="color: white">Forum</a></th>
                             <th><a href="/chat" style="color: white">Chat</a></th>
+                            <th><a href="/fav_products" style="color: white">Products</a></th>
 
                             {% if user.is_authenticated %}
                             <th><img style="width: 25px;" src="{{ user|gravatar:60 }}" /></th>
