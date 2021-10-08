@@ -2,7 +2,7 @@
 {% block content %}
 <h1>List of users</h1>
 {% for user in ulist %}
-<p>{{user.name}} {{user.email}} </p>
+<p><span> {{user}}</span> : {{user.email}}</p>
 {% endfor %}
 <h4>Add a user select demo</h4>
 <form>
