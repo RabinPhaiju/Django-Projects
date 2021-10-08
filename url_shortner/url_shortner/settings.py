@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'well',
     'rest_api',
     'forum_tagme',
+    'favsql',
 
     # Extensions - see requirements.txt
     'django_extensions',
@@ -182,7 +183,38 @@ AUTHENTICATION_BACKENDS = (
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 
+# Don't set default LOGIN_URL - let django.contrib.auth set it when it is loaded
+# LOGIN_URL = '/accounts/login'
+
+# Needed for 3.2 and later
+# https://stackoverflow.com/questions/67783120/warning-auto-created-primary-key-used-when-not-defining-a-primary-key-type-by
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# https://coderwall.com/p/uzhyca/quickly-setup-sql-query-logging-django
+# https://stackoverflow.com/questions/12027545/determine-if-django-is-running-under-the-development-server
+
+'''  # Leave off for now
+import sys
+if (len(sys.argv) >= 2 and sys.argv[1] == 'runserver'):
+    print('Running locally')
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'handlers': {
+            'console': {
+                'level': 'DEBUG',
+                'class': 'logging.StreamHandler',
+            }
+        },
+        'loggers': {
+            'django.db.backends': {
+                'handlers': ['console'],
+                'level': 'DEBUG',
+            },
+        }
+    }
+'''
