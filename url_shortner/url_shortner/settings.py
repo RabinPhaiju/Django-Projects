@@ -57,12 +57,13 @@ INSTALLED_APPS = [
     'chat',
     'fav_products',
     'well',
+    'rest_api',
 
     # Extensions - see requirements.txt
     'django_extensions',
     'crispy_forms',
     'social_django',
-    # 'rest_framework',
+    'rest_framework',
 
 ]
 

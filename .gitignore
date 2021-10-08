@@ -17,3 +17,4 @@ url_shortner/chat/__pycache__/
 url_shortner/fav_products/__pycache__/
 url_shortner/well/__pycache__/
 url_shortner/scripts/__pycache__/
+url_shortner/rest_api/__pycache__/
