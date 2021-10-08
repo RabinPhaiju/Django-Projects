@@ -26,7 +26,7 @@
 {% load app_tags %}
 
 <body>
-    <div class="container">
+    <div>
         <div class="bg-dark text-white">
             <div class="row">
                 <div class="col-12 text-center">
@@ -37,7 +37,7 @@
                             <th><a href="/gview/gview" style="color: white">Gview</a></th>
                             <th><a href="/shorten/cookie" style="color: white">Cookies</a></th>
                             <th><a href="/shorten/session" style="color: white">Session</a></th>
-                            <th><a href="/laptop/laptop" style="color: white">Laptop O2M</a></th>
+                            <th><a href="/laptop/laptop" style="color: white">Laptop_O2M</a></th>
                             <th><a href="/test" style="color: white">Form_Test</a></th>
                             <th><a href="/automobile/main" style="color: white">Automobile</a></th>
                             <th><a href="/myarticles/myarticles" style="color: white">Myarticles</a></th>
@@ -45,6 +45,7 @@
                             <th><a href="/forum" style="color: white">Forum</a></th>
                             <th><a href="/chat" style="color: white">Chat</a></th>
                             <th><a href="/fav_products" style="color: white">Products</a></th>
+                            <th><a href="/well" style="color: white">Search_Post</a></th>
 
                             {% if user.is_authenticated %}
                             <th><img style="width: 25px;" src="{{ user|gravatar:60 }}" /></th>

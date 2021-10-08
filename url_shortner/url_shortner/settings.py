@@ -56,7 +56,8 @@ INSTALLED_APPS = [
     'forums',
     'chat',
     'fav_products',
-    
+    'well',
+
     # Extensions - see requirements.txt
     'django_extensions',
     'crispy_forms',
