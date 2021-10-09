@@ -24,3 +24,4 @@ url_shortner/favsql/__pycache__/
 studybud/base/__pycache__/
 studybud/studybud/__pycache__/
 studybud/base/migrations/__pycache__/
+studybud/base/api/__pycache__/
