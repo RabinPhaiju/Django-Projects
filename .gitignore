@@ -20,3 +20,7 @@ url_shortner/scripts/__pycache__/
 url_shortner/rest_api/__pycache__/
 url_shortner/forum_tagme/__pycache__/
 url_shortner/favsql/__pycache__/
+
+studybud/base/__pycache__/
+studybud/studybud/__pycache__/
+studybud/base/migrations/__pycache__/
