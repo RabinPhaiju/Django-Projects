@@ -25,3 +25,6 @@ studybud/base/__pycache__/
 studybud/studybud/__pycache__/
 studybud/base/migrations/__pycache__/
 studybud/base/api/__pycache__/
+studybud/room/__pycache__/
+studybud/room/api/__pycache__/
+studybud/room/migrations/__pycache__/
