@@ -23,6 +23,7 @@
     <input type="submit" class="btn btn-primary" value="Login Locally" />
     <input type="hidden" name="next" value="{{ next }}" />
 </form>
+<a href="{% url 'home:register' %}">Dont have account. Register here.</a>
 
 {% if settings.SOCIAL_AUTH_GITHUB_KEY %}
 <hr />

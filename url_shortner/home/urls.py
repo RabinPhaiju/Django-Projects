@@ -5,4 +5,5 @@ from django.contrib.auth import views as auth_views
 app_name = 'home'
 urlpatterns = [
     path('home', views.HomeView.as_view(),name='home'),
+    path('register', views.registerPage,name='register'),
 ]

@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.contrib.auth import login
+from django.shortcuts import redirect, render
 from django.views import View
 from django.conf import settings
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -18,3 +21,19 @@ class HomeView(View):
             'islocal': islocal
         }
         return render(request, 'home/home.html', context)
+
+def registerPage(request):
+    form = UserCreationForm()
+
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            # login(request,user) # for direct login
+            return redirect('')
+        else:
+            messages.error(request,'An error occur in registration.')
+
+    return render(request,'registration/register.html',{'form':form})

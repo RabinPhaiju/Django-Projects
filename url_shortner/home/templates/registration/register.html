@@ -1,0 +1,15 @@
+{% extends "base_bootstrap.html" %}
+
+{% block content %}
+
+<div class="container">
+    </br>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-primary" value="Register" />
+        <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+    <a href="{% url 'login' %}">Already have account, Login</a>
+</div>
+{% endblock %}
