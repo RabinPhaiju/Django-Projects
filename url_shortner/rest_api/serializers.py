@@ -1,14 +1,7 @@
-from rest_api.models import Breed, Cat
+from .models import Student
 from rest_framework import serializers
 
-class BreedSerializer(serializers.HyperlinkedModelSerializer):
+class StudentSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Breed
-        fields = ( 'name', )
-
-class CatSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Cat
-        # fields = '__all__'
-        fields = ( 'nickname', 'weight', 'foods', 'breed' )
-
+        model = Student
+        fields = ( 'name', 'age')

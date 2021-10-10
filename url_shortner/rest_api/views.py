@@ -1,31 +1,23 @@
-from rest_api.models import Breed, Cat
-from rest_framework import viewsets
-from rest_api.serializers import BreedSerializer, CatSerializer
-
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from django.shortcuts import render
+from rest_framework import serializers
+from rest_framework import permissions
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .serializers import StudentSerializer
+from .models import Student
 from rest_framework.permissions import IsAuthenticated
 
-class BreedViewSet(viewsets.ModelViewSet):
-    class Meta:
-        model = Breed
-        fields = ('name',)
-    """
-    API endpoint that allows breeds to be viewed or edited.
-    """
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
+class StudentView(APIView):
     permission_classes = (IsAuthenticated,)
 
-    serializer_class = BreedSerializer
-
-    queryset = Breed.objects.all()
-
-class CatViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows cats to be viewed or edited.
-    """
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
-    permission_classes = (IsAuthenticated,)
-
-    serializer_class = CatSerializer
-
-    queryset = Cat.objects.all()
+    def get(self,request,*args,**kwargs):
+        data = Student.objects.all()
+        serializer = StudentSerializer(data,many=True)
+        return Response(serializer.data)
+    
+    def post(self,request,*args,**kwargs):
+        serializer = StudentSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)

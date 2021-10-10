@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'social_django',
     'rest_framework',
+    'rest_framework.authtoken',
     'taggit',
 ]
 
