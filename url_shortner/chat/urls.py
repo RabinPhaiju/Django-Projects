@@ -13,6 +13,11 @@ urlpatterns = [
     path('syntax', TemplateView.as_view(template_name='chat/syntax.html'), name='syntax'),
     path('jsonfun', views.jsonfun, name='jsonfun'),
 
+    path('<str:room>/', views.room, name='room'),
+    path('checkroom', views.checkroom, name='checkroom'),
+    path('send', views.send, name='send'),
+    path('getMessages/<str:room>/', views.getMessages, name='getMessages'),
+
     path('talk', views.TalkMain.as_view(), name='talk'),
     path('messages', views.TalkMessages.as_view(), name='messages'),
 
