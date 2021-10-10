@@ -6,14 +6,18 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework.permissions import IsAuthenticated
 
 class BreedViewSet(viewsets.ModelViewSet):
+    class Meta:
+        model = Breed
+        fields = ('name',)
     """
     API endpoint that allows breeds to be viewed or edited.
     """
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
 
-    queryset = Breed.objects.all()
     serializer_class = BreedSerializer
+
+    queryset = Breed.objects.all()
 
 class CatViewSet(viewsets.ModelViewSet):
     """
@@ -22,5 +26,6 @@ class CatViewSet(viewsets.ModelViewSet):
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
 
-    queryset = Cat.objects.all()
     serializer_class = CatSerializer
+
+    queryset = Cat.objects.all()
