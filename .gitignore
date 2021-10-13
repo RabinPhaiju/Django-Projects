@@ -30,3 +30,13 @@ studybud/room/api/__pycache__/
 studybud/room/migrations/__pycache__/
 url_shortner/chat/migrations/__pycache__/
 report_pro/report_pro/__pycache__/
+report_pro/customers/__pycache__/
+report_pro/customers/migrations/__pycache__/
+report_pro/products/__pycache__/
+report_pro/profiles/__pycache__/
+report_pro/reports/__pycache__/
+report_pro/sales/__pycache__/
+report_pro/profiles/migrations/__pycache__/
+report_pro/reports/migrations/__pycache__/
+report_pro/products/migrations/__pycache__/
+report_pro/sales/migrations/__pycache__/
