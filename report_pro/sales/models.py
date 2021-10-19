@@ -18,6 +18,7 @@ class Position(models.Model):
         return super().save(*args, **kwargs)
 
     def get_sales_id(self):
+        # reverse relationship # self.[model_name]_set.first()
         sale_obj = self.sale_set.first()
         return sale_obj.id
     
