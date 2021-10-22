@@ -18,3 +18,12 @@
     width: 200px;
     border-radius: 50%;
 }
+.logo-sm{
+    height: 30px;
+    width: auto;
+}
+.avatar-sm{
+    height: 40px;
+    width: auto;
+    border-radius: 50%;
+}
