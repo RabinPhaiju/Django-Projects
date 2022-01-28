@@ -40,3 +40,8 @@ report_pro/profiles/migrations/__pycache__/
 report_pro/reports/migrations/__pycache__/
 report_pro/products/migrations/__pycache__/
 report_pro/sales/migrations/__pycache__/
+RestApi_Pizza_delivery/pizza_delivery/__pycache__/
+RestApi_Pizza_delivery/authentication/migrations/
+RestApi_Pizza_delivery/authentication/__pycache__/
+RestApi_Pizza_delivery/orders/__pycache__/
+RestApi_Pizza_delivery/orders/migrations/__pycache__/
