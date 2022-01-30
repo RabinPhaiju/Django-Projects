@@ -40,3 +40,5 @@ report_pro/profiles/migrations/__pycache__/
 report_pro/reports/migrations/__pycache__/
 report_pro/products/migrations/__pycache__/
 report_pro/sales/migrations/__pycache__/
+django_venv/
+*.pyc
