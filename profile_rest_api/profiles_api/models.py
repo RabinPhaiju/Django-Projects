@@ -36,6 +36,8 @@ class UserProfile(AbstractBaseUser,PermissionsMixin):
     name=models.CharField(max_length=255)
     email=models.EmailField(max_length=255,unique=True)
     phone = models.IntegerField(default=0)
+    image=models.CharField(max_length=255,default='default.jpg')
+    
     is_active=models.BooleanField(default=True)
     is_staff=models.BooleanField(default=False)
 
