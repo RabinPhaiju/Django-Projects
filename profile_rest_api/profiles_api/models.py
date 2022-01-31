@@ -35,7 +35,7 @@ class UserProfileManager(BaseUserManager):
 class UserProfile(AbstractBaseUser,PermissionsMixin):
     name=models.CharField(max_length=255)
     email=models.EmailField(max_length=255,unique=True)
-    phone = models.IntegerField(default=0)
+    phone = models.CharField(default='0',max_length=14)
     image=models.CharField(max_length=255,default='default.jpg')
     
     is_active=models.BooleanField(default=True)

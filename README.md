@@ -101,3 +101,22 @@ Use this as your `WGSI configuration file`:
 You can edit these files and settings in the Web tab to switch between
 your various projects on PythonAnywhere. Make sure to reload under the Web tab after
 every file or configuration change.
+
+# When to use APIViews
+
+- Need full control over the logic
+- Processing files and rendering a sunchronous response
+- You are calling other APIs/services
+- Accessing local files or data
+
+# When to use ViewSets
+
+- A simple CRUD interface to your database
+- A quick and simple API
+- Little to no customization on the logic
+- Working with standard data structures
+
+# APIViews vs GenericAPIView
+
+- GenericAPIView is a class-based view
+- APIView is a function-based view
