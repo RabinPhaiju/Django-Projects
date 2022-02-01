@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
+from django.conf import settings # from setting.py
 
 # Override the default user model
 class UserProfileManager(BaseUserManager):
@@ -51,3 +52,19 @@ class UserProfile(AbstractBaseUser,PermissionsMixin):
     
     def __str__(self):
         return f"<User {self.email}>"
+
+
+# can conside as another app
+class ProfileFeedItem(models.Model):
+    """Profile status update"""
+    user_profile = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE # if user is deleted, delete all the feed items
+    )
+    status_text = models.CharField(max_length=255)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        """Return the model a string"""
+        return self.status_text
