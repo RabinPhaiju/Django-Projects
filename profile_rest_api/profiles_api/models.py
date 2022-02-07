@@ -62,6 +62,7 @@ class ProfileFeedItem(models.Model):
         on_delete=models.CASCADE # if user is deleted, delete all the feed items
     )
     status_text = models.CharField(max_length=255)
+    verified = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     
