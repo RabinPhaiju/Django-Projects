@@ -65,6 +65,7 @@ class ProfileFeedItem(models.Model):
     verified = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
+    views = models.IntegerField(default=0)
     
     def __str__(self):
         """Return the model a string"""
