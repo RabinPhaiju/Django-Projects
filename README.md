@@ -17,12 +17,6 @@
 
 - **Create a superuser** - (python manage.py createsuperuser)
   
-- **Model View Controller**
-  - We name the three basic functions of an application as follows
-  - Controller - The code that does the thinking and decision making
-  - View - The HTML, CSs, etc. which makes up the look and feel of the application
-  - Model - The persistent data that we keep in the data store
-
 - **Test sql album,artist,genre,track**
   - sqlite -> sqlite3 db.sqlite
   - tables -> .tables
@@ -61,18 +55,3 @@
 - **Load script**
   - python manage.py runscript [script_name] # without .py or folder_name
 
-- **When to use APIViews**
-  - Need full control over the logic
-  - Processing files and rendering a synchronous response
-  - You are calling other APIs/services
-  - Accessing local files or data
-
-- **When to use ViewSets**
-  - A simple CRUD interface to your database
-  - A quick and simple API
-  - Little to no customization on the logic
-  - Working with standard data structures
-
-- **APIViews vs GenericAPIView**
-  - GenericAPIView is a class-based view
-  - APIView is a function-based view

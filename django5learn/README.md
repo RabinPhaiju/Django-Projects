@@ -30,3 +30,27 @@
   - open the app/admin.py
     - admin.site.register([app_model_name])
 
+- **Use generic views: Less code is better**
+  - Generic views abstract common patterns to the point where you don’t even need to write Python code to write an app. For example, the ListView and DetailView generic views abstract the concepts of “display a list of objects” and “display a detail page for a particular type of object” respectively.
+
+- **Model View Controller**
+  - We name the three basic functions of an application as follows
+  - Controller - The code that does the thinking and decision making
+  - View - The HTML, CSs, etc. which makes up the look and feel of the application
+  - Model - The persistent data that we keep in the data store
+
+- **When to use APIViews**
+  - Need full control over the logic
+  - Processing files and rendering a synchronous response
+  - You are calling other APIs/services
+  - Accessing local files or data
+
+- **When to use ViewSets**
+  - A simple CRUD interface to your database
+  - A quick and simple API
+  - Little to no customization on the logic
+  - Working with standard data structures
+
+- **APIViews vs GenericAPIView**
+  - GenericAPIView is a class-based view
+  - APIView is a function-based view
