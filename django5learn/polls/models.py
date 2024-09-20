@@ -1,16 +1,22 @@
 from django.db import models
 import datetime
+<<<<<<< HEAD
 from django.conf import settings
 from django.core.files.storage import storages
 from django import forms
 from django.utils import timezone
 from django.contrib import admin
 from django.core.files.storage import FileSystemStorage
+=======
+from django.utils import timezone
+
+>>>>>>> c296fdb (added django5.1 tutorial)
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField("date published")
 
+<<<<<<< HEAD
     @admin.display(
         # decorator for method was_published_recently 
         boolean=True,
@@ -27,16 +33,27 @@ class Question(models.Model):
 
     def __str__(self):
         return self.question_text
+=======
+    def was_published_recently(self):
+        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+
+    # def __str__(self):
+        # return self.question_text
+>>>>>>> c296fdb (added django5.1 tutorial)
 
 
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
+<<<<<<< HEAD
     # many-to-one relationship by default
 
+=======
+>>>>>>> c296fdb (added django5.1 tutorial)
     choice_text = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)
 
     def __str__(self):
+<<<<<<< HEAD
         return self.choice_text
     
 
@@ -75,3 +92,6 @@ class CarForm(forms.ModelForm):
     class Meta:
         model = Car
         fields = '__all__'
+=======
+        return self.choice_text
+>>>>>>> c296fdb (added django5.1 tutorial)

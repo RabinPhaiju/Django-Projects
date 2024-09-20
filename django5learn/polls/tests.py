@@ -1,4 +1,5 @@
 from django.test import TestCase
+<<<<<<< HEAD
 from django.urls import reverse
 
 # Create your tests here.
@@ -137,3 +138,7 @@ class QuestionDetailViewTests(TestCase):
         url = reverse("polls:detail", args=(past_question.id,))
         response = self.client.get(url)
         self.assertContains(response, past_question.question_text)
+=======
+
+# Create your tests here.
+>>>>>>> c296fdb (added django5.1 tutorial)

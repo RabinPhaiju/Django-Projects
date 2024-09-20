@@ -1,4 +1,5 @@
 **/venv
+<<<<<<< HEAD
 ngrok.exe
 **/uploaded_files/name.txt
 */media/photos/*
@@ -39,3 +40,8 @@ RestApi_Pizza_delivery/orders/migrations/__pycache__/
 =======
 >>>>>>> fed55c3 (git ignire)
 >>>>>>> c8e3993 (git ignire)
+=======
+**/__pycache__
+ngrok.exe
+/__pycache__/
+>>>>>>> c296fdb (added django5.1 tutorial)

@@ -1,6 +1,7 @@
 # Django 5.1.1.
 
 from pathlib import Path
+<<<<<<< HEAD
 import sys
 import os
 from dotenv import load_dotenv
@@ -9,6 +10,12 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent
 dotenv_path = BASE_DIR / '.env'
 load_dotenv(dotenv_path)
+=======
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+>>>>>>> c296fdb (added django5.1 tutorial)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -19,6 +26,7 @@ SECRET_KEY = 'django-insecure-l^s(&&*aqq6&npm+mse(*o5*3xc8ypx$^*+poa)8ylb_g^j#v#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = [
     '127.0.0.1','localhost',
     'testserver', # for shell
@@ -27,6 +35,12 @@ ALLOWED_HOSTS = [
 
 # Application definition
 # TODO https://docs.djangoproject.com/en/5.1/topics/http/sessions/
+=======
+ALLOWED_HOSTS = []
+
+
+# Application definition
+>>>>>>> c296fdb (added django5.1 tutorial)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,12 +51,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'polls.apps.PollsConfig',
+<<<<<<< HEAD
     'sql_queries.apps.SqlQueriesConfig',
     'sql_manager.apps.SqlManagerConfig',
     'sql_raw.apps.SqlRawConfig',
     'topic_http.apps.TopicHttpConfig',
     'model_form.apps.ModelFormsConfig',
     'base.apps.BaseConfig',
+=======
+>>>>>>> c296fdb (added django5.1 tutorial)
 ]
 
 MIDDLEWARE = [
@@ -60,8 +77,12 @@ ROOT_URLCONF = 'django5learn.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+<<<<<<< HEAD
         # 'DIRS': [],
         'DIRS': [BASE_DIR / 'templates'],
+=======
+        'DIRS': [],
+>>>>>>> c296fdb (added django5.1 tutorial)
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,6 +99,7 @@ WSGI_APPLICATION = 'django5learn.wsgi.application'
 
 
 # Database
+<<<<<<< HEAD
 # TODO https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 # https://docs.djangoproject.com/en/5.1/topics/db/multi-db/
 
@@ -104,6 +126,17 @@ DATABASES = {
 # If you’re in an existing project and you just want to add a couple of fields to User, it's easier and safer to use a UserProfile model with a one-to-one relationship with User.
 # If you want to switch to a custom User model in an existing project, you can do so, but it requires extra steps (such as rolling back migrations and starting fresh with a custom user model), which can be complex depending on your database and migration history.
 AUTH_USER_MODEL = 'base.User'
+=======
+# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+>>>>>>> c296fdb (added django5.1 tutorial)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -112,6 +145,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
+<<<<<<< HEAD
     # {
     #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     # },
@@ -121,6 +155,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'OPTIONS': {
             'min_length': 10,  # Example of setting a custom length
         },
+=======
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+>>>>>>> c296fdb (added django5.1 tutorial)
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -130,6 +168,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+<<<<<<< HEAD
 # Password hashers
 # https://docs.djangoproject.com/en/5.1/topics/auth/passwords/
 PASSWORD_HASHERS = [
@@ -157,13 +196,19 @@ if not TESTING:
     ]
 
 
+=======
+>>>>>>> c296fdb (added django5.1 tutorial)
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
+<<<<<<< HEAD
 TIME_ZONE = 'Asia/Kathmandu' # TODO set TIME_ZONE to your time zone
+=======
+TIME_ZONE = 'UTC' # TODO set TIME_ZONE to your time zone
+>>>>>>> c296fdb (added django5.1 tutorial)
 
 USE_I18N = True
 
@@ -174,18 +219,24 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+<<<<<<< HEAD
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 # STATIC_ROOT = BASE_DIR / "staticfiles" 
+=======
+>>>>>>> c296fdb (added django5.1 tutorial)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+<<<<<<< HEAD
 
 MEDIA_ROOT = BASE_DIR / 'media/photos'
 MEDIA_URL = '/media/'
 
 # login url -- override default(/accounts/login/) -- in redirect
 LOGIN_URL = '/login/'
+=======
+>>>>>>> c296fdb (added django5.1 tutorial)

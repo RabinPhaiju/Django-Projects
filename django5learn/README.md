@@ -1,8 +1,11 @@
 # Django App
 
+<<<<<<< HEAD
 - Run `docker-compose up -d` for postgreSQL
 - Run `docker-compose down` for postgreSQL stopping
 
+=======
+>>>>>>> c296fdb (added django5.1 tutorial)
 - ## Adding new app
 
   - python3 manage.py startapp [app_name]
@@ -11,10 +14,14 @@
     - **Using the app's name**: Simply add the app's name as a string.
     - **Using the app's configuration class**: You can add the app using the full path to its configuration class. This approach gives you more flexibility if your app has a custom configuration
 
+<<<<<<< HEAD
 - ## Make migrations 
   
   - (python3 manage.py makemigrations [app_name])
   - (python3 manage.py makemigrations --name)
+=======
+- ## Make migrations - (python3 manage.py makemigrations [app_name])
+>>>>>>> c296fdb (added django5.1 tutorial)
 
   - By running makemigrations, you’re telling Django that you’ve made some changes to your models.
   - The makemigrations command looks at the INSTALLED_APPS setting and creates any necessary database tables according to the database settings in your mysite/settings.py.
@@ -36,6 +43,7 @@
   - open the app/admin.py
     - admin.site.register([app_model_name])
 
+<<<<<<< HEAD
 - **Use generic views: Less code is better**
   - Generic views abstract common patterns to the point where you don’t even need to write Python code to write an app. For example, the ListView and DetailView generic views abstract the concepts of “display a list of objects” and “display a detail page for a particular type of object” respectively.
 
@@ -68,3 +76,5 @@
 - **APIViews vs GenericAPIView**
   - GenericAPIView is a class-based view
   - APIView is a function-based view
+=======
+>>>>>>> c296fdb (added django5.1 tutorial)

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <form action="{% url 'polls:vote' question.id %}" method="post">
     {% csrf_token %}
     <fieldset>
@@ -10,3 +11,11 @@
     </fieldset>
     <input type="submit" value="Vote">
     </form>
+=======
+<h1>{{ question.question_text }}</h1>
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }}</li>
+{% endfor %}
+</ul>
+>>>>>>> c296fdb (added django5.1 tutorial)

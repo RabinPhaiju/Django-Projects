@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import asyncio
 from django.forms import BaseFormSet, HiddenInput, formset_factory
 from django.shortcuts import get_object_or_404, redirect, render,get_list_or_404
@@ -75,6 +76,15 @@ class AsyncView(View):
 
 
 # --------------- Using function-based views -----------------
+=======
+from django.shortcuts import get_object_or_404, render
+from django.http import HttpResponse, Http404
+# from django.template import loader
+
+from .models import Question
+
+
+>>>>>>> c296fdb (added django5.1 tutorial)
 def index(request):
     latest_question_list = Question.objects.order_by("-pub_date")[:5]
     context = { "latest_question_list": latest_question_list }
@@ -98,6 +108,7 @@ def detail(request, question_id):
 
 
 def results(request, question_id):
+<<<<<<< HEAD
     # get_list_or_404() 
     # TODO https://docs.djangoproject.com/en/5.1/topics/http/shortcuts/
     question = get_object_or_404(Question, pk=question_id)
@@ -255,3 +266,11 @@ def upload_image(request):
         form = CarForm()
     
     return render(request, 'upload_car.html', {'form': form})
+=======
+    response = "You're looking at the results of question %s."
+    return HttpResponse(response % question_id)
+
+
+def vote(request, question_id):
+    return HttpResponse("You're voting on question %s." % question_id)
+>>>>>>> c296fdb (added django5.1 tutorial)
