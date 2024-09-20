@@ -1,0 +1,13 @@
+{
+    "git.ignoreLimitWarning": true,
+    "cSpell.words": [
+        "createsuperuser",
+        "makemigrations",
+        "mysite",
+        "Phaiju",
+        "runscript",
+        "runserver",
+        "startapp",
+        "startproject"
+    ]
+}
