@@ -33,6 +33,8 @@
 - **Use generic views: Less code is better**
   - Generic views abstract common patterns to the point where you don’t even need to write Python code to write an app. For example, the ListView and DetailView generic views abstract the concepts of “display a list of objects” and “display a detail page for a particular type of object” respectively.
 
+- **Automated Testing** - (python manage.py test [app_name])
+
 - **Model View Controller**
   - We name the three basic functions of an application as follows
   - Controller - The code that does the thinking and decision making
