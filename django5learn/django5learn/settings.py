@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'polls.apps.PollsConfig',
+    'sql_queries.apps.SqlQueriesConfig',
 ]
 
 MIDDLEWARE = [
