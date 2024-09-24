@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'polls.apps.PollsConfig',
     'sql_queries.apps.SqlQueriesConfig',
     'sql_manager.apps.SqlManagerConfig',
+    'sql_raw.apps.SqlRawConfig',
 ]
 
 MIDDLEWARE = [
