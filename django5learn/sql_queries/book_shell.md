@@ -53,7 +53,7 @@
 >>> q[0].authors__count
 >>> q[0].store__count
 
-## oins and aggregates
+## Joins and aggregates
 >>>
 >>> Store.objects.annotate(min_price=Min("books__price"), max_price=Max("books__price"))
 >>> Store.objects.aggregate(min_price=Min("books__price"), max_price=Max("books__price"))

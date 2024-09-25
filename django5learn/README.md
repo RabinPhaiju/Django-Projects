@@ -35,6 +35,8 @@
 
 - **Automated Testing** - (python manage.py test [app_name])
 
+- **Fixtures** - (python3 manage.py loaddata [path_to_fixtures ot file_name.extension])
+
 - **Model View Controller**
   - We name the three basic functions of an application as follows
   - Controller - The code that does the thinking and decision making

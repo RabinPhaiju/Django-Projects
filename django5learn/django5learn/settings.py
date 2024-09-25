@@ -69,6 +69,7 @@ WSGI_APPLICATION = 'django5learn.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+# https://docs.djangoproject.com/en/5.1/topics/db/multi-db/
 
 DATABASES = {
     'default': {
@@ -119,7 +120,7 @@ if not TESTING:
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC' # TODO set TIME_ZONE to your time zone
+TIME_ZONE = 'Asia/Kathmandu' # TODO set TIME_ZONE to your time zone
 
 USE_I18N = True
 

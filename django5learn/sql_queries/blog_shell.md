@@ -32,10 +32,19 @@
 >>> entry.authors.add(john, paul, george, ringo)
 >>> entry.save()
 
+## Create and add Author to Entry in one step
+>>>
+>>> entry.authors.create(name="Rabin")
+
 ## Retrieving objects
 >>>
 >>> Blog.objects
 >>> Blog.objects.all()
+
+## Retrieving (Author objects has acess to Entry objects)
+>>>
+>>> a1 = Author.objects.get(name="Rabin")
+>>> a1.entry_set.all()
 
 ## Retrieving specific objects with filters
 >>>
@@ -67,6 +76,12 @@
 >>>
 >>> Entry.objects.filter(pub_date__lte="2005-05-01")
 >>> Entry.objects.filter(blog_id=4)
+
+## Count and distinct
+>>>
+>>> Entry.objects.filter(authors__name__startswith="R").distinct().count()
+>>> Entry.objects.filter(authors__name__startswith="R").distinct()
+>>> Entry.objects.filter(authors__name__startswith="R").count()
 
 ## Lookups that span relationships
 

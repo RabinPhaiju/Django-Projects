@@ -1,0 +1,29 @@
+[
+    {
+        "model": "sql_raw.person",
+        "pk": 1,
+        "fields": {
+            "first_name": "John",
+            "last_name": "Doe",
+            "birth_date": "1985-06-15"
+        }
+    },
+    {
+        "model": "sql_raw.person",
+        "pk": 2,
+        "fields": {
+            "first_name": "Jane",
+            "last_name": "Smith",
+            "birth_date": "1990-11-25"
+        }
+    },
+    {
+        "model": "sql_raw.person",
+        "pk": 3,
+        "fields": {
+            "first_name": "Michael",
+            "last_name": "Johnson",
+            "birth_date": "1978-02-10"
+        }
+    }
+]
