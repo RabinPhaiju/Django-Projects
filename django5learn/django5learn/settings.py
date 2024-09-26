@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'sql_queries.apps.SqlQueriesConfig',
     'sql_manager.apps.SqlManagerConfig',
     'sql_raw.apps.SqlRawConfig',
+    'topic_http.apps.TopicHttpConfig',
 ]
 
 MIDDLEWARE = [
