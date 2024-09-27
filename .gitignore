@@ -44,4 +44,7 @@ RestApi_Pizza_delivery/orders/migrations/__pycache__/
 **/__pycache__
 ngrok.exe
 /__pycache__/
+<<<<<<< HEAD
 >>>>>>> c296fdb (added django5.1 tutorial)
+=======
+>>>>>>> 202b9c5 (added file upload)

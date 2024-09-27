@@ -1,8 +1,11 @@
 from django.db import models
 import datetime
 <<<<<<< HEAD
+<<<<<<< HEAD
 from django.conf import settings
 from django.core.files.storage import storages
+=======
+>>>>>>> 202b9c5 (added file upload)
 from django import forms
 from django.utils import timezone
 from django.contrib import admin
@@ -54,6 +57,7 @@ class Choice(models.Model):
 
     def __str__(self):
 <<<<<<< HEAD
+<<<<<<< HEAD
         return self.choice_text
     
 
@@ -95,3 +99,11 @@ class CarForm(forms.ModelForm):
 =======
         return self.choice_text
 >>>>>>> c296fdb (added django5.1 tutorial)
+=======
+        return self.choice_text
+    
+# File Upload
+class UploadFileForm(forms.Form):
+    title = forms.CharField(max_length=50)
+    file = forms.FileField()
+>>>>>>> 202b9c5 (added file upload)

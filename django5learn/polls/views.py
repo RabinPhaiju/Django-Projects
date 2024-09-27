@@ -6,12 +6,19 @@ from django.http import HttpResponse, Http404,HttpResponseRedirect
 from django.urls import reverse
 from django.db.models import F
 from django.template import loader
+<<<<<<< HEAD
 from django.views import View, generic
 
 from .utils import handle_uploaded_file
 from .models import CarForm, ContactForm, Question,Choice, UploadFileForm
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
+=======
+from django.views import generic
+
+from .utils import handle_uploaded_file
+from .models import Question,Choice, UploadFileForm
+>>>>>>> 202b9c5 (added file upload)
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
@@ -146,6 +153,7 @@ def vote(request, question_id):
         # reverse helps avoid having to hardcode a URL in the view function. It is given the name of the view that we want to pass control to and the variable portion of the URL pattern that points to that view. 
 
 
+<<<<<<< HEAD
 # forms.Form
 # https://docs.djangoproject.com/en/5.1/topics/forms/formsets/
 # https://docs.djangoproject.com/en/5.1/topics/forms/formsets/#using-more-than-one-formset-in-a-view
@@ -274,3 +282,16 @@ def upload_image(request):
 def vote(request, question_id):
     return HttpResponse("You're voting on question %s." % question_id)
 >>>>>>> c296fdb (added django5.1 tutorial)
+=======
+# File upload
+# https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/#top
+def upload_file(request):
+    if request.method == "POST":
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            handle_uploaded_file(request.FILES["file"])
+            return render(request, "upload.html", {'form': form,"message": "File uploaded successfully"})
+    else:
+        form = UploadFileForm()
+    return render(request, "upload.html", {"form": form})
+>>>>>>> 202b9c5 (added file upload)
