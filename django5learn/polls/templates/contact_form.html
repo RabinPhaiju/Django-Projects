@@ -1,0 +1,36 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'upload_style.css' %}">
+
+<body>
+    <h1>Contact Form</h1>
+    
+    <!-- The form for uploading files -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <!-- Render the form fields -->
+
+        {% comment %} {{ form.as_p }} {% endcomment %}
+        {% comment %} OR {% endcomment %}
+        {% for field in form %}
+            <div class="fieldWrapper">
+                {{ field.errors }}
+                {{ field.label_tag }} {{ field }}
+                {% if field.help_text %}
+                <p class="help" id="{{ field.auto_id }}_helptext">
+                    {{ field.help_text|safe }}
+                </p>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <!-- Submit button -->
+        <button type="submit">Send</button>
+    </form>
+
+    <!-- Optional: Show any messages or feedback -->
+    {% if message %}
+        <div class="message {{ message.tags }}">
+            <li>{{ message }}</li>
+        </div>
+    {% endif %}

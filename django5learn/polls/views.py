@@ -6,7 +6,7 @@ from django.template import loader
 from django.views import generic
 
 from .utils import handle_uploaded_file
-from .models import Question,Choice, UploadFileForm
+from .models import ContactForm, Question,Choice, UploadFileForm
 from django.utils import timezone
 
 ### We can use either generic views or function-based views
@@ -110,12 +110,34 @@ def vote(request, question_id):
         # reverse helps avoid having to hardcode a URL in the view function. It is given the name of the view that we want to pass control to and the variable portion of the URL pattern that points to that view. 
 
 
+# forms.Form
+def contactForm(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data["subject"]
+            message = form.cleaned_data["message"]
+            sender = form.cleaned_data["sender"]
+            cc_myself = form.cleaned_data["cc_myself"]
+
+            recipients = ["info@example.com"]
+            if cc_myself:
+                recipients.append(sender)
+
+            print(recipients[0]+" "+subject+" "+message+" "+sender)
+            return render(request, "contact_form.html", {"form": form,"message": "Thanks for contact"})
+    else:
+        form = ContactForm()
+    return render(request, "contact_form.html", {"form": form})
+
+
 # File upload
 # TODO https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/#top
 def upload_file(request):
     if request.method == "POST":
         form = UploadFileForm(request.POST, request.FILES)
-        if form.is_valid():
+
+        if form.is_valid(): # validation
             handle_uploaded_file(request.FILES["file"])
             return render(request, "upload.html", {'form': form,"message": "File uploaded successfully"})
     else:

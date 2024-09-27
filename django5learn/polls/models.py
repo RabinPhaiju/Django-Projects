@@ -36,7 +36,18 @@ class Choice(models.Model):
     def __str__(self):
         return self.choice_text
     
+
+# forms.Form
+class ContactForm(forms.Form):
+    subject = forms.CharField(max_length=100)
+    message = forms.CharField(widget=forms.Textarea)
+    sender = forms.EmailField()
+    cc_myself = forms.BooleanField(required=False)
+
 # File Upload
 class UploadFileForm(forms.Form):
-    title = forms.CharField(max_length=50)
+    title = forms.CharField(
+        label="Title",max_length=50,
+        required=True,
+        )
     file = forms.FileField()
