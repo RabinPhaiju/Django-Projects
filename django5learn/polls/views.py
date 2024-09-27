@@ -4,7 +4,9 @@ from django.urls import reverse
 from django.db.models import F
 from django.template import loader
 from django.views import generic
-from .models import Question,Choice
+
+from .utils import handle_uploaded_file
+from .models import Question,Choice, UploadFileForm
 from django.utils import timezone
 
 ### We can use either generic views or function-based views
@@ -103,3 +105,16 @@ def vote(request, question_id):
         return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
         
         # reverse helps avoid having to hardcode a URL in the view function. It is given the name of the view that we want to pass control to and the variable portion of the URL pattern that points to that view. 
+
+
+# File upload
+# https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/#top
+def upload_file(request):
+    if request.method == "POST":
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            handle_uploaded_file(request.FILES["file"])
+            return render(request, "upload.html", {'form': form,"message": "File uploaded successfully"})
+    else:
+        form = UploadFileForm()
+    return render(request, "upload.html", {"form": form})

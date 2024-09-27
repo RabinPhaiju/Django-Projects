@@ -1,5 +1,6 @@
 from django.db import models
 import datetime
+from django import forms
 from django.utils import timezone
 from django.contrib import admin
 
@@ -34,3 +35,8 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
+    
+# File Upload
+class UploadFileForm(forms.Form):
+    title = forms.CharField(max_length=50)
+    file = forms.FileField()
