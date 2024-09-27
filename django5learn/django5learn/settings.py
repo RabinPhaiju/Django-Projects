@@ -20,6 +20,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+# TODO https://docs.djangoproject.com/en/5.1/topics/http/sessions/
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -69,7 +70,7 @@ WSGI_APPLICATION = 'django5learn.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+# TODO https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 # https://docs.djangoproject.com/en/5.1/topics/db/multi-db/
 
 DATABASES = {

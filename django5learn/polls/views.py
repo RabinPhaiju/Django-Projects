@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render,get_list_or_404
 from django.http import HttpResponse, Http404,HttpResponseRedirect
 from django.urls import reverse
 from django.db.models import F
@@ -12,6 +12,7 @@ from django.utils import timezone
 ### We can use either generic views or function-based views
 
 # ---------- Using class-based views / generic views -----------
+# TODO https://docs.djangoproject.com/en/5.1/ref/class-based-views/
 class IndexView(generic.ListView):
     """
     By default Listview uses template called <app name>/<model name>_list.html; we use template_name to tell ListView to use our existing "polls/index.html" template.
@@ -72,6 +73,8 @@ def detail(request, question_id):
 
 
 def results(request, question_id):
+    # get_list_or_404() 
+    # TODO https://docs.djangoproject.com/en/5.1/topics/http/shortcuts/
     question = get_object_or_404(Question, pk=question_id)
     return render(request, "polls/results.html", {"question": question})
 
@@ -108,7 +111,7 @@ def vote(request, question_id):
 
 
 # File upload
-# https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/#top
+# TODO https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/#top
 def upload_file(request):
     if request.method == "POST":
         form = UploadFileForm(request.POST, request.FILES)
