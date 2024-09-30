@@ -10,9 +10,10 @@
         
         <!-- Render the form fields -->
 
-        {% comment %} {{ form.as_p }} {% endcomment %}
+        {{ form.as_p }}
+        
         {% comment %} OR {% endcomment %}
-        {% for field in form %}
+        {% comment %} {% for field in form %}
             <div class="fieldWrapper">
                 {{ field.errors }}
                 {{ field.label_tag }} {{ field }}
@@ -22,7 +23,7 @@
                 </p>
                 {% endif %}
             </div>
-        {% endfor %}
+        {% endfor %} {% endcomment %}
 
         <!-- Submit button -->
         <button type="submit">Send</button>

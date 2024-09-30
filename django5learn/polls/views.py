@@ -1,3 +1,4 @@
+from django.forms import BaseFormSet, HiddenInput, formset_factory
 from django.shortcuts import get_object_or_404, render,get_list_or_404
 from django.http import HttpResponse, Http404,HttpResponseRedirect
 from django.urls import reverse
@@ -111,23 +112,63 @@ def vote(request, question_id):
 
 
 # forms.Form
+# https://docs.djangoproject.com/en/5.1/topics/forms/formsets/
+# https://docs.djangoproject.com/en/5.1/topics/forms/formsets/#using-more-than-one-formset-in-a-view
+class BaseArticleFormSet(BaseFormSet):
+    def get_deletion_widget(self):
+        return HiddenInput(attrs={"class": "deletion"})
+
+def contactFormset(request):
+    ContactFormSet = formset_factory(ContactForm,extra=1,max_num=2) # formset=BaseArticleFormSet,can_delete=True)
+    if request.method == "POST":
+        formset = ContactFormSet(request.POST,request.FILES)
+        if formset.is_valid():
+            for form in formset:
+                subject = form.cleaned_data.get('subject')
+                message = form.cleaned_data.get('message')
+                sender = form.cleaned_data.get('sender')
+                date = form.cleaned_data.get('date')
+                cc_myself = form.cleaned_data.get('cc_myself')
+                recipients = ["info@example.com"]
+                if cc_myself:
+                    recipients.append(sender)
+
+                print(recipients[0]+" "+subject+" "+message+" "+sender+" "+str(date))
+        formset = ContactFormSet()
+
+        return render(request, "contact_form.html", {"form": formset,"message": "Thanks for contact"})
+    else:
+        formset = ContactFormSet(initial=[
+            {
+                'subject':'this is a subject',
+                'message':'this is a message',
+                'sender':'sender@gmail.com',
+                'date':'2022-2-2',
+                'cc_myself':True
+            }
+        ])
+
+    return render(request, "contact_form.html", {"form": formset})
+
 def contactForm(request):
     if request.method == "POST":
         form = ContactForm(request.POST)
+        print(request.POST)
         if form.is_valid():
             subject = form.cleaned_data["subject"]
             message = form.cleaned_data["message"]
             sender = form.cleaned_data["sender"]
+            date = form.cleaned_data['date']
             cc_myself = form.cleaned_data["cc_myself"]
 
             recipients = ["info@example.com"]
             if cc_myself:
                 recipients.append(sender)
 
-            print(recipients[0]+" "+subject+" "+message+" "+sender)
+            print(recipients[0]+" "+subject+" "+message+" "+sender+" "+str(date))
             return render(request, "contact_form.html", {"form": form,"message": "Thanks for contact"})
     else:
-        form = ContactForm()
+        form = ContactForm() #default way
     return render(request, "contact_form.html", {"form": form})
 
 
