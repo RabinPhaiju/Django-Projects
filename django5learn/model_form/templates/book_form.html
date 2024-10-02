@@ -1,0 +1,22 @@
+
+<body>
+    <h1>Book Form</h1>
+    
+    <!-- The form for uploading files -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <!-- Render the form fields -->
+
+        {{ form.as_p }}
+
+        <!-- Submit button -->
+        <button type="submit">Send</button>
+    </form>
+
+    <!-- Optional: Show any messages or feedback -->
+    {% if message %}
+        <div class="message {{ message.tags }}">
+            <li>{{ message }}</li>
+        </div>
+    {% endif %}

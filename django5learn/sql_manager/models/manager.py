@@ -62,4 +62,4 @@ class Book(models.Model):
         return self.title + " by " + self.author
 
     objects = models.Manager()  # The default manager.
-    rabs_objects = RabsBookManager()  # The Dahl-specific manager.
+    rabs_objects = RabsBookManager()  # The Rabs-specific manager.

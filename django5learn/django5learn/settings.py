@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'sql_manager.apps.SqlManagerConfig',
     'sql_raw.apps.SqlRawConfig',
     'topic_http.apps.TopicHttpConfig',
+    'model_form.apps.ModelFormsConfig',
 ]
 
 MIDDLEWARE = [

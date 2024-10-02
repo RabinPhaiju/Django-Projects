@@ -12,6 +12,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("polls/", include("polls.urls")),
     path("topic_http/", include("topic_http.urls")),
+    path("model_form/", include("model_form.urls")),
 ]
 
 
