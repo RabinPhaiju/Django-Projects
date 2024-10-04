@@ -1,5 +1,5 @@
 from django.urls import path
-
+from django.contrib.auth.decorators import login_required, permission_required
 from . import views
 
 app_name = "polls" 
@@ -30,7 +30,11 @@ urlpatterns = [
     # File upload
     path("upload/", views.upload_file, name="upload_file"),
 
-    path("contact/",views.contactForm,name="contact"),
+    # path("contact/",views.contactForm,name="contact"),
     # path("contact/",views.contactFormset,name="contact"),
+    path('contact/',views.ContactFormView.as_view(),name="contact"),
+
+    path("my_view",login_required(views.MyView.as_view()),name="my_view"),
+    path("my_async",views.AsyncView.as_view(),name="my_async"),
 ]
 # Note that the name of the matched pattern in the path strings of the second and third patterns has changed from <question_id> to <pk>. This is necessary because we’ll use the DetailView generic view to replace our detail() and results() views, and it expects the primary key value captured from the URL to be called "pk".

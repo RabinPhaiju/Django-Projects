@@ -1,10 +1,11 @@
+import asyncio
 from django.forms import BaseFormSet, HiddenInput, formset_factory
 from django.shortcuts import get_object_or_404, render,get_list_or_404
 from django.http import HttpResponse, Http404,HttpResponseRedirect
 from django.urls import reverse
 from django.db.models import F
 from django.template import loader
-from django.views import generic
+from django.views import View, generic
 
 from .utils import handle_uploaded_file
 from .models import ContactForm, Question,Choice, UploadFileForm
@@ -12,7 +13,7 @@ from django.utils import timezone
 
 ### We can use either generic views or function-based views
 
-# ---------- Using class-based views / generic views -----------
+# ---------- Using generic views -----------
 # TODO https://docs.djangoproject.com/en/5.1/ref/class-based-views/
 class IndexView(generic.ListView):
     """
@@ -48,6 +49,22 @@ class ResultsView(generic.DetailView):
     model = Question
     template_name = "polls/results.html"
 
+
+# -------------- Class based views ----------------
+# https://docs.djangoproject.com/en/5.1/topics/class-based-views/intro/
+class MyView(View):
+    def get(self, request):
+        # <view logic>
+        return HttpResponse("result")
+    def post(self, request):
+        # <view logic>
+        return HttpResponse("post result")
+
+class AsyncView(View):
+    async def get(self, request, *args, **kwargs):
+        # Perform io-blocking view logic using await, sleep for example.
+        await asyncio.sleep(1)
+        return HttpResponse("Hello async world!")
 
 
 # --------------- Using function-based views -----------------
@@ -170,7 +187,25 @@ def contactForm(request):
     else:
         form = ContactForm() #default way
     return render(request, "contact_form.html", {"form": form})
+# ------------------using generic views ----------------
+class ContactFormView(generic.FormView):
+    template_name = "contact_form.html"
+    form_class = ContactForm
+    success_url = "/polls/contact/"
 
+    def form_valid(self, form):
+        subject = form.cleaned_data["subject"]
+        message = form.cleaned_data["message"]
+        sender = form.cleaned_data["sender"]
+        date = form.cleaned_data['date']
+        cc_myself = form.cleaned_data["cc_myself"]
+
+        recipients = ["info@example.com"]
+        if cc_myself:
+            recipients.append(sender)
+
+        print(recipients[0]+" "+subject+" "+message+" "+sender+" "+str(date))
+        return super().form_valid(form)
 
 # File upload
 # TODO https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/#top

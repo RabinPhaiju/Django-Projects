@@ -45,6 +45,9 @@ class ContactForm(forms.Form):
     date = forms.DateField(widget=forms.DateInput)
     cc_myself = forms.BooleanField(required=False)
 
+    def send_email(self):
+        pass
+
 # File Upload
 class UploadFileForm(forms.Form):
     title = forms.CharField(
