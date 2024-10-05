@@ -15,13 +15,19 @@
     - **Using the app's configuration class**: You can add the app using the full path to its configuration class. This approach gives you more flexibility if your app has a custom configuration
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3662f6b (added file/image upload)
 - ## Make migrations 
   
   - (python3 manage.py makemigrations [app_name])
   - (python3 manage.py makemigrations --name)
+<<<<<<< HEAD
 =======
 - ## Make migrations - (python3 manage.py makemigrations [app_name])
 >>>>>>> c296fdb (added django5.1 tutorial)
+=======
+>>>>>>> 3662f6b (added file/image upload)
 
   - By running makemigrations, you’re telling Django that you’ve made some changes to your models.
   - The makemigrations command looks at the INSTALLED_APPS setting and creates any necessary database tables according to the database settings in your mysite/settings.py.

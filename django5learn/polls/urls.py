@@ -39,6 +39,9 @@ urlpatterns = [
     # Image upload
     path("upload_image/", views.upload_image, name="upload_image"),
 
+    # Image upload
+    path("upload_image/", views.upload_image, name="upload_image"),
+
     # path("contact/",views.contactForm,name="contact"),
     # path("contact/",views.contactFormset,name="contact"),
     path('contact/',views.ContactFormView.as_view(),name="contact"),

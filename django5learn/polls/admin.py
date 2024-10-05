@@ -2,6 +2,9 @@ from django.contrib import admin
 
 # Register your models here.
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3662f6b (added file/image upload)
 from .models import Question,Choice,Car
 
 class ChoiceInline(admin.TabularInline): # tabular
@@ -26,6 +29,7 @@ admin.site.register(Question,QuestionAdmin)
 
 
 admin.site.register(Choice)
+<<<<<<< HEAD
 admin.site.register(Car)
 =======
 from .models import Question,Choice
@@ -33,3 +37,6 @@ from .models import Question,Choice
 admin.site.register(Question)
 admin.site.register(Choice)
 >>>>>>> c296fdb (added django5.1 tutorial)
+=======
+admin.site.register(Car)
+>>>>>>> 3662f6b (added file/image upload)

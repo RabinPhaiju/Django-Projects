@@ -13,12 +13,15 @@ from .utils import handle_uploaded_file
 from .models import CarForm, ContactForm, Question,Choice, UploadFileForm
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
+<<<<<<< HEAD
 =======
 from django.views import generic
 
 from .utils import handle_uploaded_file
 from .models import Question,Choice, UploadFileForm
 >>>>>>> 202b9c5 (added file upload)
+=======
+>>>>>>> 3662f6b (added file/image upload)
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
@@ -250,6 +253,7 @@ def upload_file(request):
             # text upload/merge
             # handle_uploaded_file(uploaded_file)
             
+<<<<<<< HEAD
             return render(request, "upload.html", {'form': form,"message": "File uploaded successfully"})
     else:
         form = UploadFileForm()
@@ -290,8 +294,26 @@ def upload_file(request):
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             handle_uploaded_file(request.FILES["file"])
+=======
+>>>>>>> 3662f6b (added file/image upload)
             return render(request, "upload.html", {'form': form,"message": "File uploaded successfully"})
     else:
         form = UploadFileForm()
     return render(request, "upload.html", {"form": form})
+<<<<<<< HEAD
 >>>>>>> 202b9c5 (added file upload)
+=======
+
+# Image upload
+# https://docs.djangoproject.com/en/5.1/topics/files/
+def upload_image(request):
+    if request.method == "POST":
+        form = CarForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()  # This will save the car object and the uploaded photo
+            return redirect('polls:upload_image')  # Redirect after successful save
+    else:
+        form = CarForm()
+    
+    return render(request, 'upload_car.html', {'form': form})
+>>>>>>> 3662f6b (added file/image upload)

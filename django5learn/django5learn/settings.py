@@ -4,6 +4,7 @@ from pathlib import Path
 <<<<<<< HEAD
 import sys
 import os
+<<<<<<< HEAD
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -11,6 +12,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 dotenv_path = BASE_DIR / '.env'
 load_dotenv(dotenv_path)
 =======
+=======
+>>>>>>> 3662f6b (added file/image upload)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -232,6 +235,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 MEDIA_ROOT = BASE_DIR / 'media/photos'
 MEDIA_URL = '/media/'
@@ -240,3 +244,8 @@ MEDIA_URL = '/media/'
 LOGIN_URL = '/login/'
 =======
 >>>>>>> c296fdb (added django5.1 tutorial)
+=======
+
+MEDIA_ROOT = BASE_DIR / 'media/photos'
+MEDIA_URL = '/media/'
+>>>>>>> 3662f6b (added file/image upload)
