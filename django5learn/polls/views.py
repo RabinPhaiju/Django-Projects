@@ -1,6 +1,6 @@
 import asyncio
 from django.forms import BaseFormSet, HiddenInput, formset_factory
-from django.shortcuts import get_object_or_404, render,get_list_or_404
+from django.shortcuts import get_object_or_404, redirect, render,get_list_or_404
 from django.http import HttpResponse, Http404,HttpResponseRedirect
 from django.urls import reverse
 from django.db.models import F
@@ -8,7 +8,9 @@ from django.template import loader
 from django.views import View, generic
 
 from .utils import handle_uploaded_file
-from .models import ContactForm, Question,Choice, UploadFileForm
+from .models import CarForm, ContactForm, Question,Choice, UploadFileForm
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
 from django.utils import timezone
 
 ### We can use either generic views or function-based views
@@ -214,8 +216,30 @@ def upload_file(request):
         form = UploadFileForm(request.POST, request.FILES)
 
         if form.is_valid(): # validation
-            handle_uploaded_file(request.FILES["file"])
+            uploaded_file = request.FILES['file']
+            # file upload
+            file_name = default_storage.save(uploaded_file.name, ContentFile(uploaded_file.read()))
+            file_url = default_storage.url(file_name)
+            file_content  = default_storage.open(file_name).read()
+            decoded_content = file_content.decode('utf-8')
+            return render(request, "upload.html", {'form': form,"message": f"File uploaded successfully to url {file_url} . It is \"{decoded_content}\" with {len(file_content)} bytes"})
+            # text upload/merge
+            # handle_uploaded_file(uploaded_file)
+            
             return render(request, "upload.html", {'form': form,"message": "File uploaded successfully"})
     else:
         form = UploadFileForm()
     return render(request, "upload.html", {"form": form})
+
+# Image upload
+# https://docs.djangoproject.com/en/5.1/topics/files/
+def upload_image(request):
+    if request.method == "POST":
+        form = CarForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()  # This will save the car object and the uploaded photo
+            return redirect('polls:upload_image')  # Redirect after successful save
+    else:
+        form = CarForm()
+    
+    return render(request, 'upload_car.html', {'form': form})

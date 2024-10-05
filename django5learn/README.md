@@ -8,7 +8,10 @@
     - **Using the app's name**: Simply add the app's name as a string.
     - **Using the app's configuration class**: You can add the app using the full path to its configuration class. This approach gives you more flexibility if your app has a custom configuration
 
-- ## Make migrations - (python3 manage.py makemigrations [app_name])
+- ## Make migrations 
+  
+  - (python3 manage.py makemigrations [app_name])
+  - (python3 manage.py makemigrations --name)
 
   - By running makemigrations, you’re telling Django that you’ve made some changes to your models.
   - The makemigrations command looks at the INSTALLED_APPS setting and creates any necessary database tables according to the database settings in your mysite/settings.py.

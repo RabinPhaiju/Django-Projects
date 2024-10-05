@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Question,Choice
+from .models import Question,Choice,Car
 
 class ChoiceInline(admin.TabularInline): # tabular
 # class ChoiceInline(admin.StackedInline): # stacked
@@ -25,3 +25,4 @@ admin.site.register(Question,QuestionAdmin)
 
 
 admin.site.register(Choice)
+admin.site.register(Car)

@@ -1,8 +1,11 @@
 from django.db import models
 import datetime
+from django.conf import settings
+from django.core.files.storage import storages
 from django import forms
 from django.utils import timezone
 from django.contrib import admin
+from django.core.files.storage import FileSystemStorage
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
@@ -55,3 +58,20 @@ class UploadFileForm(forms.Form):
         required=True,
         )
     file = forms.FileField()
+
+# Image Upload
+def select_storage():
+    return FileSystemStorage(location=settings.MEDIA_ROOT)
+    # return storages["mystorage"]
+    # if settings.DEBUG else MyRemoteStorage()
+class Car(models.Model):
+    name = models.CharField(max_length=100)
+    photo = models.ImageField(storage=select_storage)
+
+    def __str__(self):
+        return self.name
+
+class CarForm(forms.ModelForm):
+    class Meta:
+        model = Car
+        fields = '__all__'

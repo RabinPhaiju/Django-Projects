@@ -3,3 +3,4 @@
 ngrok.exe
 RestApi_Pizza_delivery/authentication/migrations/
 **/uploaded_files/name.txt
+*/media/photos/*
