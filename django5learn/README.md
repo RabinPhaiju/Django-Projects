@@ -36,7 +36,11 @@
 - **Use generic views: Less code is better**
   - Generic views abstract common patterns to the point where you don’t even need to write Python code to write an app. For example, the ListView and DetailView generic views abstract the concepts of “display a list of objects” and “display a detail page for a particular type of object” respectively.
 
-- **Automated Testing** - (python manage.py test [app_name])
+- **Automated Testing**
+  - python manage.py test [app_name]
+  - python manage.py test [app_name].tests.[test_name/class_name]
+  - pattern file test
+    - python manage.py test --pattern="test*.py"
 
 - **Fixtures** - (python3 manage.py loaddata [path_to_fixtures ot file_name.extension])
 
