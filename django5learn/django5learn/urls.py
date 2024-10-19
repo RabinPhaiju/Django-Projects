@@ -11,8 +11,8 @@ Whenever Django encounters include(), it chops off whatever part of the URL matc
 urlpatterns = [
     # path("", main_views.homepage),
     path('admin/', admin.site.urls),
-    # path("accounts/", include("accounts.urls")),
-    path('accounts/', include('django.contrib.auth.urls')),
+    # path('accounts/', include('django.contrib.auth.urls')),
+    path("accounts/", include("accounts.urls")),
 
     path("polls/", include("polls.urls")),
     path("topic_http/", include("topic_http.urls")),

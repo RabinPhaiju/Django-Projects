@@ -1,0 +1,20 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'upload_style.css' %}">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accounts Login</title>
+</head>
+<body>
+    <h2>Accounts Login</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+
+    <p>Don't have an account? <a href="{% url 'signup' %}">Sign up here</a>.</p>
+
+</body>
+</html>
