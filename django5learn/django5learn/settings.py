@@ -18,7 +18,7 @@ SECRET_KEY = 'django-insecure-l^s(&&*aqq6&npm+mse(*o5*3xc8ypx$^*+poa)8ylb_g^j#v#
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
+    '127.0.0.1','localhost',
     'testserver', # for shell
 ]
 
@@ -146,3 +146,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = BASE_DIR / 'media/photos'
 MEDIA_URL = '/media/'
+
+# login url -- override default(/accounts/login/)
+# LOGIN_URL = '/login/' 
