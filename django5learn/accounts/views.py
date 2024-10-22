@@ -19,6 +19,8 @@ def signup(request):
 
 
 def login_view(request):
+    if request.user.is_authenticated:
+        return redirect('polls:index')
     if request.method == 'POST':
         form = LoginForm(data=request.POST)
         if form.is_valid():

@@ -12,19 +12,22 @@ from .models import CarForm, ContactForm, Question,Choice, UploadFileForm
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 from django.utils import timezone
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required,user_passes_test
+from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 
 ### We can use either generic views or function-based views
 
 # ---------- Using generic views -----------
 # TODO https://docs.djangoproject.com/en/5.1/ref/class-based-views/
-class IndexView(LoginRequiredMixin,generic.ListView):
+class IndexView(LoginRequiredMixin,UserPassesTestMixin,generic.ListView):
     """
     By default Listview uses template called <app name>/<model name>_list.html; we use template_name to tell ListView to use our existing "polls/index.html" template.
     """
     template_name = "polls/index.html"
     context_object_name = "latest_question_list"
+
+    def test_func(self):
+        return self.request.user.email.endswith("@gmail.com")
 
     def get_queryset(self):
         """
@@ -233,9 +236,15 @@ def upload_file(request):
         form = UploadFileForm()
     return render(request, "upload.html", {"form": form})
 
+
+def email_check(user):
+    return user.email.endswith("@admin.com")
+
+
 # Image upload
 # https://docs.djangoproject.com/en/5.1/topics/files/
 @login_required
+@user_passes_test(email_check,login_url="/accounts/login/") # performs a redirect when the callable returns False:
 def upload_image(request):
     if request.method == "POST":
         form = CarForm(request.POST, request.FILES)
