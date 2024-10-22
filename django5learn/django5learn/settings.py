@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'sql_raw.apps.SqlRawConfig',
     'topic_http.apps.TopicHttpConfig',
     'model_form.apps.ModelFormsConfig',
-    'accounts.apps.AccountsConfig',
+    'base.apps.BaseConfig',
 ]
 
 MIDDLEWARE = [
@@ -172,5 +172,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT = BASE_DIR / 'media/photos'
 MEDIA_URL = '/media/'
 
-# login url -- override default(/accounts/login/)
-# LOGIN_URL = '/login/' 
+# login url -- override default(/accounts/login/) -- in redirect
+LOGIN_URL = '/login/'

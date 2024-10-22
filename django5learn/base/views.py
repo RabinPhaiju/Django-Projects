@@ -12,15 +12,15 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)  # Automatically log the user in after signup
-            return redirect('polls:index')  # Redirect to a home page or wherever you'd like
+            return redirect('homepage')  # Redirect to a home page or wherever you'd like
     else:
         form = SignUpForm()
-    return render(request, 'accounts/signup.html', {'form': form})
+    return render(request, 'base/signup.html', {'form': form})
 
 
 def login_view(request):
     if request.user.is_authenticated:
-        return redirect('polls:index')
+        return redirect('homepage')
     if request.method == 'POST':
         form = LoginForm(data=request.POST)
         if form.is_valid():
@@ -29,7 +29,14 @@ def login_view(request):
             if 'next' in request.POST:
                 return redirect(request.POST.get('next'))
             else:
-                return redirect('polls:index')
+                return redirect('homepage')
     else:
         form = LoginForm()
-    return render(request, 'accounts/login.html', {'form': form})
+    return render(request, 'base/login.html', {'form': form})
+
+def logoutUser(request):
+    logout(request)
+    return redirect('homepage')
+
+def homepage(request):
+    return render(request, 'homepage.html')
