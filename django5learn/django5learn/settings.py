@@ -86,6 +86,13 @@ DATABASES = {
     }
 }
 
+# Authentication Default user model
+# https://docs.djangoproject.com/en/5.1/topics/auth/customizing/
+# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-user-model.
+# Note:
+# If you’re in an existing project and you just want to add a couple of fields to User, it's easier and safer to use a UserProfile model with a one-to-one relationship with User.
+# If you want to switch to a custom User model in an existing project, you can do so, but it requires extra steps (such as rolling back migrations and starting fresh with a custom user model), which can be complex depending on your database and migration history.
+# AUTH_USER_MODEL = 'accounts.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
