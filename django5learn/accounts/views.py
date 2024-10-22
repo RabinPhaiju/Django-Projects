@@ -14,7 +14,7 @@ def signup(request):
             login(request, user)  # Automatically log the user in after signup
             return redirect('polls:index')  # Redirect to a home page or wherever you'd like
     else:
-        form = UserCreationForm()
+        form = SignUpForm()
     return render(request, 'accounts/signup.html', {'form': form})
 
 
