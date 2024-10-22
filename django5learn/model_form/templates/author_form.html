@@ -1,22 +1,27 @@
+{% extends "base_bootstrap.html" %}
+{% block navbar %}{% include 'navbar.html' %}{% endblock navbar %}
+{% block title %} Author Form {% endblock title %}
 
-<body>
-    <h1>Author Form</h1>
+{% block content %}
+
+<h1>Author Form</h1>
     
-    <!-- The form for uploading files -->
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        
-        <!-- Render the form fields -->
+<!-- The form for uploading files -->
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <!-- Render the form fields -->
 
-        {{ form.as_p }}
+    {{ form.as_p }}
 
-        <!-- Submit button -->
-        <button type="submit">Send</button>
-    </form>
+    <!-- Submit button -->
+    <button type="submit">Send</button>
+</form>
 
-    <!-- Optional: Show any messages or feedback -->
-    {% if message %}
-        <div class="message {{ message.tags }}">
-            <li>{{ message }}</li>
-        </div>
-    {% endif %}
+<!-- Optional: Show any messages or feedback -->
+{% if message %}
+    <div class="message {{ message.tags }}">
+        <li>{{ message }}</li>
+    </div>
+{% endif %}
+{% endblock %}

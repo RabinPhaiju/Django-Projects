@@ -11,7 +11,7 @@ blog_patterns = [
 ## using re to match year
 # fix -> the year 10000 will no longer match since the year integers are constrained to be exactly four digits long.
 urlpatterns = [
-    path("", views.current_datetime),
+    path("", views.current_datetime, name="topic_http"),
     path("articles/2003/", views.special_case_2003),
 
     re_path(r"^articles/(?P<year>[0-9]{4})/$", views.year_archive,{"foo":"bar"},name='year-archive'),
