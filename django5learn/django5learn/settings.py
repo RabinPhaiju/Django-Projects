@@ -3,10 +3,12 @@
 from pathlib import Path
 import sys
 import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+dotenv_path = BASE_DIR / '.env'
+load_dotenv(dotenv_path)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -80,9 +82,18 @@ WSGI_APPLICATION = 'django5learn.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/topics/db/multi-db/
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': os.getenv('SQL_ENGINE', 'django.db.backends.sqlite3'),
+        'NAME': os.getenv('SQL_DATABASE', BASE_DIR / 'db.sqlite3'),
+        'USER': os.getenv("SQL_USER", "user"),
+        'PASSWORD': os.getenv("SQL_PASSWORD", "password"),
+        'HOST': os.getenv("SQL_HOST", "localhost"),
+        'PORT': os.getenv('SQL_PORT', '5432'),
     }
 }
 
@@ -92,7 +103,7 @@ DATABASES = {
 # Note:
 # If you’re in an existing project and you just want to add a couple of fields to User, it's easier and safer to use a UserProfile model with a one-to-one relationship with User.
 # If you want to switch to a custom User model in an existing project, you can do so, but it requires extra steps (such as rolling back migrations and starting fresh with a custom user model), which can be complex depending on your database and migration history.
-# AUTH_USER_MODEL = 'accounts.User'
+AUTH_USER_MODEL = 'base.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

@@ -1,7 +1,6 @@
 # accounts/views.py
 from django.shortcuts import render, redirect
 from django.contrib.auth import login,authenticate,logout
-from django.contrib.auth.models import User
 from .forms import LoginForm, SignUpForm
 from django.contrib.auth.forms import UserCreationForm
 

@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16
+    container_name: djangolearn_db
+    env_file:
+      - .env
+    volumes:
+      - db_data:/var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    networks:
+      - network
+    restart: always
+
+networks:
+  network:
+    driver: bridge
+
+volumes:
+  db_data:

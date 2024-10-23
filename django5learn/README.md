@@ -1,5 +1,8 @@
 # Django App
 
+- Run `docker-compose up -d` for postgreSQL
+- Run `docker-compose down` for postgreSQL stopping
+
 - ## Adding new app
 
   - python3 manage.py startapp [app_name]

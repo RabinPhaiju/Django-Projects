@@ -27,7 +27,7 @@ class IndexView(LoginRequiredMixin,UserPassesTestMixin,generic.ListView):
     context_object_name = "latest_question_list"
 
     def test_func(self):
-        return self.request.user.email.endswith("@gmail.com")
+        return self.request.user.email.endswith("@email.com")
 
     def get_queryset(self):
         """
