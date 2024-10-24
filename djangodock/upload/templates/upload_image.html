@@ -1,0 +1,23 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'upload_image.css' %}">
+
+
+<body>
+    <div class="container">
+        <h1>Upload Image</h1>
+        
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- Form fields rendered automatically -->
+            {{ form.as_p }}
+
+            <!-- Submit button -->
+            <button type="submit">Upload</button>
+        </form>
+
+        <!-- Optional message display -->
+        {% if message %}
+        <div class="message">{{ message }}</div>
+        {% endif %}
+    </div>
+</body>

@@ -3,4 +3,6 @@ __pycache
 venv
 .DS_Store
 .mediafiles/
-staticfiles
+staticfiles/
+.cache/
+.local
