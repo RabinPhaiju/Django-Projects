@@ -1,17 +1,20 @@
 FROM python:3.13-slim-bullseye
 
-ENV PYTHONUNBUFFERED 1
-ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
 
-ENV APP_HOME /home/app/web
+ENV APP_HOME=/home/app/web
 WORKDIR $APP_HOME
 
-RUN groupadd -g 1000 djangodock \
-    && useradd -m -u 1000 -g 1000 -s /bin/bash -d $APP_HOME djangodock
+RUN groupadd -g 1000 systemadmin \
+    && useradd -m -u 1000 -g 1000 -s /bin/bash -d $APP_HOME systemadmin
 
-RUN pip install pipenv 
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends gcc \
+    && apt-get install -y netcat \
+    && rm -rf /var/lib/apt/lists/*
 
-# Copy Pipfile
+    RUN pip install pipenv 
 COPY Pipfile* .
 
 # Install dependencies
@@ -21,8 +24,8 @@ COPY docker/entrypoint.sh /home/entrypoint.sh
 RUN sed -i 's/\r$//g' /home/entrypoint.sh
 RUN chmod +x /home/entrypoint.sh
 
-RUN chown -R djangodock:djangodock $APP_HOME
-USER djangodock
+RUN chown -R systemadmin:systemadmin $APP_HOME
+USER systemadmin
 
 # Copy application code
 COPY . $APP_HOME
