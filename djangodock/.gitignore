@@ -1,0 +1,6 @@
+*.pyc
+__pycache
+venv
+.DS_Store
+.mediafiles/
+staticfiles
