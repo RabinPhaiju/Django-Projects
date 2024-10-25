@@ -2,6 +2,7 @@
 __pycache
 venv
 .DS_Store
+*.sql
 .mediafiles/
 staticfiles/
 .cache/

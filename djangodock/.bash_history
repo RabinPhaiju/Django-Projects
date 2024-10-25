@@ -7,3 +7,5 @@ python manage.py createsuperuser
 clear
 pipenv install gunicorn
 exit
+python manage.py createsuperuser
+exit
