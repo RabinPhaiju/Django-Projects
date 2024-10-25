@@ -32,6 +32,9 @@ server-down:
 	$(compose-cmd) down
 
 build:
+	@$(compose-cmd) build
+
+build-nocache:
 	@$(compose-cmd) build --no-cache
 
 migrate:

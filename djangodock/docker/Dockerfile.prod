@@ -14,9 +14,17 @@ RUN groupadd -g 1000 systemadmin \
 RUN apt-get update \
     && apt-get install -y --no-install-recommends gcc \
     && apt-get install -y netcat \
+    && apt-get install -y wget gnupg2 \
     && rm -rf /var/lib/apt/lists/*
 
-    RUN pip install pipenv 
+# Add the PostgreSQL 16 APT repository for(backup)
+RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ bullseye-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
+&& wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
+&& apt-get update \
+&& apt-get install -y postgresql-client-16 \
+&& rm -rf /var/lib/apt/lists/*
+
+RUN pip install pipenv 
 COPY Pipfile* .
 
 # Install dependencies
