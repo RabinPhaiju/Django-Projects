@@ -43,11 +43,21 @@ migrate:
 shell:
 	@$(compose-cmd) run --rm web python manage.py shell
 
+# problem- we dont need client and dont need 'web' to backup, directly go to db_container and backup/restore
+db-r-backup:
+	docker exec -it djangodock_db_dev pg_dump -U djangodock djangodock_dev > dump1.sql
+
+db-r-restore:
+	docker exec -i djangodock_db_dev psql -U djangodock djangodock_dev < dump1.sql
+
+db-r-drop:
+	docker exec -i djangodock_db_dev dropdb -U djangodock djangodock_dev
+
 db-backup:
 	@$(compose-cmd) run --rm -v $$PWD:/tmp web /bin/bash -c  "PGPASSWORD=\$$SQL_PASSWORD pg_dump -h \$$SQL_HOST  -p \$$SQL_PORT -U \$$SQL_USER --format p \$$SQL_DATABASE > /tmp/dump.sql"
 
 db-restore:
-	@$(compose-cmd) run --rm -v $$PWD/dump.sql:/tmp/dump.sql web /bin/bash -c  "PGPASSWORD=\$$SQL_PASSWORD psql -h \$$SQL_HOST  -p \$$SQL_PORT -U \$$SQL_USER \$$SQL_DATABASE < /tmp/dump.sql"
+	@$(compose-cmd) run --rm -v $$PWD/dump.sql:/tmp/dump.sql web /bin/bash -c  "PGPASSWORD=\$$SQL_PASSWORD psql -h \$$SQL_HOST  -p \$$SQL_PORT -U \$$SQL_USER \$$SQL_DATABASE < dump.sql"
 
 db-drop:
 	@$(compose-cmd) run --rm  web /bin/bash -c "PGPASSWORD=\$$SQL_PASSWORD dropdb -U \$$SQL_USER -h \$$SQL_HOST -p \$$SQL_PORT \$$SQL_DATABASE"
