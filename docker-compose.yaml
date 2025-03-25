@@ -1,0 +1,35 @@
+
+services:
+  web:
+    volumes:
+      - $PWD:/home/app/web
+    image: task_manager_server:1.0
+    build: 
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: task_manager_server
+    ports:
+      - 8000:8000
+    command: python manage.py runserver 0.0.0.0:8000
+    env_file:
+      - .env.dev
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    container_name: task_manager_db
+    expose:
+      - '5432'
+    volumes:
+      - db_data:/var/lib/postgresql/data/pgdata
+    environment:
+      - POSTGRES_USER=rbnph
+      - POSTGRES_PASSWORD=systemadmin
+      - POSTGRES_DB=rbnph_dev
+      - PGDATA=/var/lib/postgresql/data/pgdata
+   
+volumes:
+  db_data:
+
+  
