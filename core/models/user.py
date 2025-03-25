@@ -1,11 +1,9 @@
 from django.contrib.auth.models import AbstractUser, Group
 from django.contrib.auth.models import UserManager as BaseUserManager
 from django.db import models
-from django_lifecycle import LifecycleModelMixin
+from django_lifecycle import LifecycleModelMixin, hook
 
 from core.models import BaseModelManager
-
-
 
 class UserManager(BaseModelManager, BaseUserManager):
     pass
@@ -36,3 +34,8 @@ class User(LifecycleModelMixin, AbstractUser):
 
     def __str__(self):
         return self.email
+    
+    # hash password before save
+    def save(self, *args, **kwargs):
+        # self.set_password(self.password)
+        super().save(*args, **kwargs)
