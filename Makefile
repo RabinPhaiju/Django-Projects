@@ -38,8 +38,11 @@ migrate:
 migrations:
 			$(run-web) python manage.py makemigrations
 
-createsuperuser:
-			$(compose-cmd) exec web python manage.py createsuperuser
+superuser:
+			$(run-web) python manage.py createsuperuser
 
 dev:
 			$(compose-cmd) up --build --attach web
+
+app:
+			$(run-web) python manage.py startapp
