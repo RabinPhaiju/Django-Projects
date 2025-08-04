@@ -1,4 +1,4 @@
-FROM python:3.11.4-slim-buster
+FROM python:3.11.4-slim-bullseye
 
 
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -19,8 +19,9 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 COPY docker/entrypoint.sh /home/entrypoint.sh
+COPY docker/wait-for-it.sh /home/wait-for-it.sh
 RUN sed -i 's/\r$//g' /home/entrypoint.sh
-RUN chmod +x /home/entrypoint.sh
+RUN chmod +x /home/entrypoint.sh && chmod +x /home/wait-for-it.sh
 
 RUN chown -R rbnph:rbnph $APP_HOME
 USER rbnph

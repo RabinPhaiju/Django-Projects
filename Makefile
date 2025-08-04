@@ -45,4 +45,7 @@ dev:
 			$(compose-cmd) up --build --attach web
 
 app:
-			$(run-web) python manage.py startapp [app_name]
+			$(run-web) python manage.py startapp $(app)
+
+import-records:
+	$(compose-cmd) run --rm -T web manage import_records $(apps)

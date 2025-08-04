@@ -1,0 +1,9 @@
+---
+model: auth.Group
+noupdate: True
+---
+system_admin:
+  name: system_admin
+
+public_user:
+  name: public_user

@@ -1,0 +1,13 @@
+---
+model: core.User
+noupdate: True
+---
+admin:
+  first_name: Administrator
+  email: admin@mail.com
+  username: admin
+  is_staff: True
+  is_superuser: True
+  password: '{{hash_password("admin")}}'
+  groups:
+    - 'auth.Group(system_admin)'

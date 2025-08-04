@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.urls import path, include
-from tasks.api.urls import urlpatterns as api_urls
 from core.api.urls import urlpatterns as core_api_urls
 
 from rest_framework_simplejwt.views import (
@@ -15,5 +14,4 @@ urlpatterns = [
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
 
-urlpatterns += api_urls
 urlpatterns += core_api_urls

@@ -2,19 +2,29 @@
 
 set -e
 
-if [ "$DATABASE" = "postgres" ]
-then
+if [ "$DATABASE" = "postgres" ]; then
     echo "Waiting for postgres..."
-    
-
     while ! nc -z $SQL_HOST $SQL_PORT; do
       sleep 0.1
     done
-
     echo "PostgreSQL started"
 fi
 
-# python manage.py flush --no-input
-# python manage.py migrate
+: ${WAIT_TIMEOUT:=60}
+: ${DB_HOST:=db}
+: ${DB_PORT:=5432}
 
-exec "$@"
+case "$1" in
+  manage)
+    shift
+    exec /home/wait-for-it.sh $DB_HOST:$DB_PORT -s -t $WAIT_TIMEOUT -- python manage.py "$@"
+    ;;
+  run)
+    shift
+    exec /home/wait-for-it.sh $DB_HOST:$DB_PORT -s -t $WAIT_TIMEOUT -- python manage.py shell < "$1"
+    ;;
+  *)
+    exec "$@"
+esac
+
+exit 0
