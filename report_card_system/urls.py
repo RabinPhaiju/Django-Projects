@@ -13,13 +13,14 @@ from drf_spectacular.views import SpectacularAPIView,SpectacularSwaggerView
 app_name = "report_card_system"
 api_urls = [
     path("", include("core.api.urls")),
+    path("", include("apps.student.api.urls")),
 ]
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api-auth/", include('rest_framework.urls', namespace='rest_framework')),
-       path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/v1/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path("api/schema/", SpectacularAPIView.as_view(api_version="v1"), name="schema"),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     
