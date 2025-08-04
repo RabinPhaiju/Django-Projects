@@ -29,6 +29,20 @@ services:
       - POSTGRES_DB=rbnph_dev
       - PGDATA=/var/lib/postgresql/data/pgdata
    
+  # swagger:
+  #   image: swaggerapi/swagger-ui:v5.17.14
+  #   container_name: rcs_swagger
+  #   environment:
+  #     URLS: |
+  #       [
+  #         {"url": "http://localhost:8000/api/schema/", "name": "Localhost"},
+  #         # add live url
+  #       ]
+  #   volumes:
+  #     - ./swagger-nginx.conf:/etc/nginx/nginx.conf:ro
+  #   ports:
+  #     - 8080:8080
+
 volumes:
   db_data:
 

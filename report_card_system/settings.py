@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 from datetime import timedelta
+from corsheaders.defaults import default_headers
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +28,28 @@ SECRET_KEY = 'django-insecure-sk!@r)q$z(n$m$e^-0f%@(ee)=avzyz$+qi=99c4ui*c%!g=s)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    # live
+]
+
+# CORS_ALLOW_CREDENTIALS = False
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost",
+    "http://127.0.0.1",
+
+    # Localhost Swagger
+    "http://localhost:8080",
+    "http://127.0.0.1:8080",
+]
+
+
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    "x-fingerprint",
+]
+
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:8000',
@@ -43,9 +65,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'corsheaders',
+    "django_filters",
     'rest_framework',
     'rest_framework_simplejwt',
-    'django_filters',
+    "drf_spectacular",
+    "py_yaml_fixtures",
+    "debug_toolbar",
 
     'core',
 ]
@@ -125,6 +151,10 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication'
     ],
+    "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
+    "DEFAULT_METADATA_CLASS": "core.drf_metadata.MinimalMetadata",
+        "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    "EXCEPTION_HANDLER": "core.exceptions.exception_handler.handle_exception",
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }
@@ -134,6 +164,33 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=15),
     'ROTATE_REFRESH_TOKENS': True,
 }
+
+SERVERS = [
+        {"url": "http://localhost:8000/api/v1/"},
+
+    ]
+
+SPECTACULAR_SETTINGS = {
+    'AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    "TITLE": "Report Card System API",
+    "DESCRIPTION": "Report Card System API",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "SCHEMA_PATH_PREFIX": r"/api/v[0-9]",
+    "SCHEMA_PATH_PREFIX_TRIM": "/api",
+    "SERVE_AUTHENTICATION": [
+        # add other authentication classes
+        "rest_framework.authentication.SessionAuthentication",  # For the swagger API
+    ],
+    'SWAGGER_UI_SETTINGS': {
+        'persistAuthorization': True,
+    },
+    "SERVE_PERMISSIONS": ["rest_framework.permissions.AllowAny"],
+    "SERVERS": SERVERS,
+}
+
 
 
 # Internationalization

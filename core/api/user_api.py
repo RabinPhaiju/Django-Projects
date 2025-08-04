@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 from rest_framework.mixins import CreateModelMixin
 from rest_framework.viewsets import GenericViewSet
+from drf_spectacular.utils import extend_schema
 
 from core.permissions import BaseAccessPolicy
 from core.serializers.signup_serializer import SignupUserSerializer
@@ -20,6 +21,7 @@ class UserAPI(CreateModelMixin, GenericViewSet):
     authentication_classes = []
     permission_classes = (AllowAny,)
 
+    @extend_schema(responses={200: SignupUserSerializer})
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
