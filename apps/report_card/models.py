@@ -21,6 +21,10 @@ class ReportCard(BaseModel):
 
     class Meta:
         unique_together = ('student', 'term', 'year')
+        indexes = [
+            models.Index(fields=['student', 'year']),
+            models.Index(fields=['term']),
+        ]
 
     def __str__(self):
-        return f"{self.student.name} - {self.term.value} {self.year}"
+        return f"{self.student.name} - {self.term} {self.year}"

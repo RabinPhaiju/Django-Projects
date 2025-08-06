@@ -1,0 +1,19 @@
+---
+model: subject.Subject
+noupdate: True
+---
+math:
+  name: Math
+  code: math
+
+science:
+  name: Science
+  code: science
+
+english:
+  name: English
+  code: english
+
+history:
+  name: History
+  code: history
