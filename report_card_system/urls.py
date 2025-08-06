@@ -14,6 +14,7 @@ app_name = "report_card_system"
 api_urls = [
     path("", include("core.api.urls")),
     path("", include("apps.student.api.urls")),
+    path("", include("apps.subject.api.urls")),
     path("", include("apps.report_card.api.urls")),
 ]
 
