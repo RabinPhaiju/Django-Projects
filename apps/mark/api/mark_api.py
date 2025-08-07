@@ -28,6 +28,7 @@ class MarkFilter(ResourceFilter):
         }
 
 class MarkAPI(ResourceAPI):
+    # Optimize query by selecting related subject to reduce database hits
     queryset = Mark.objects.select_related('subject').all()
     access_policy = MarkAccessPolicy
     serializer_class = MarkSerializer

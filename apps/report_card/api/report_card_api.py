@@ -32,6 +32,7 @@ class ReportCardFilter(ResourceFilter):
         }
 
 class ReportCardAPI(ResourceAPI):
+    # Optimize query by selecting related student and marks to reduce database hits
     queryset = ReportCard.objects.select_related('student').prefetch_related('marks__subject').all()
     access_policy = ReportCardAccessPolicy
     serializer_class = ReportCardSerializer

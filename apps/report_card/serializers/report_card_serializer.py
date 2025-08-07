@@ -56,6 +56,7 @@ class AddMarksReportCardSerializer(serializers.ModelSerializer):
                 marks_to_create.append(mark)
             
         if marks_to_create:
+            # Bulk create to reduce number of queries on save
             Mark.objects.bulk_create(marks_to_create)
         if marks_to_update:
             Mark.objects.bulk_update(marks_to_update, ['score'])
@@ -74,7 +75,7 @@ class ReportCardStudentYearSerializer(serializers.ModelSerializer):
         report_cards = ReportCard.objects.filter(
             student=student,
             year=year
-        ).prefetch_related('marks__subject')
+        ).prefetch_related('marks__subject') # Eager load marks
         
         if not report_cards.exists():
             raise serializers.ValidationError("No report cards found for this year")
@@ -86,13 +87,13 @@ class ReportCardStudentYearSerializer(serializers.ModelSerializer):
         subject_averages = Mark.objects.filter(
             report_card__student=student,
             report_card__year=year
-        ).values(subjectName=F('subject__name')).annotate(avg_score=Avg('score'))
+        ).values(subjectName=F('subject__name')).annotate(avg_score=Avg('score')) # Group by subject
         
         # Calculate overall average
         overall_average = Mark.objects.filter(
             report_card__student=student,
             report_card__year=year
-        ).aggregate(total_avg=Avg('score'))
+        ).aggregate(total_avg=Avg('score')) # using db aggregate to get average
         
         return {
             'student': StudentSerializer(student).data,
