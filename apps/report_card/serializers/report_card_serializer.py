@@ -95,9 +95,9 @@ class ReportCardStudentYearSerializer(serializers.ModelSerializer):
         ).aggregate(total_avg=Avg('score'))
         
         return {
-            # 'student': StudentSerializer(student).data,
-            # 'year': year,
-            # 'report_cards': report_cards_data,
+            'student': StudentSerializer(student).data,
+            'year': year,
+            'report_cards': report_cards_data,
             'subject_averages': list(subject_averages),
             'overall_average': overall_average['total_avg'],
         }

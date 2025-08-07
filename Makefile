@@ -49,3 +49,6 @@ app:
 
 import-records:
 	$(compose-cmd) run --rm -T web manage import_records $(apps)
+
+test:
+			$(run-web) python manage.py test ${test}
