@@ -87,7 +87,7 @@ class ReportCardStudentYearSerializer(serializers.ModelSerializer):
         subject_averages = Mark.objects.filter(
             report_card__student=student,
             report_card__year=year
-        ).values(subjectName=F('subject__name')).annotate(avg_score=Avg('score')) # Group by subject
+        ).values(subjectName=F('subject__name')).annotate(avg_score=Avg('score')) # 
         
         # Calculate overall average
         overall_average = Mark.objects.filter(
