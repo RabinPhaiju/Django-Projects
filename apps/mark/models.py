@@ -10,3 +10,9 @@ class Mark(BaseModel):
 
     def __str__(self):
         return f"{self.report_card} - {self.subject} - {self.score}"
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['report_card']),
+            models.Index(fields=['subject']),
+        ]
