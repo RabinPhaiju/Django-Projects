@@ -3,9 +3,14 @@
 2. make dev 
 3. make migrate
 4. make import-records for admin user and groups and other
-5. make superuser (optional)
+5. call api - (swagger) - /api/docs/
+    1. login - (admin,admin) - /api/v1/token/
+    2. create student api - /api/v1/students/
+    3. create record_card - /v1/report-cards/
+    4. add marks - /api/v1/report-cards/1/add-marks/
+6. make superuser (optional)
 
-6. look -> Makefile
+7. look -> Makefile
 
 # Explanation on query optimization:
 
