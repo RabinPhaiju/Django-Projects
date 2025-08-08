@@ -1,5 +1,6 @@
 from apps.mark.models import Mark
 from apps.mark.serializers.marks_serializer import MarkSerializer
+from apps.report_card.tasks import welcome_rcs
 from apps.student.models import Student
 from apps.subject.models import Subject
 from rest_framework import serializers
@@ -94,6 +95,8 @@ class ReportCardStudentYearSerializer(serializers.ModelSerializer):
             report_card__student=student,
             report_card__year=year
         ).aggregate(total_avg=Avg('score')) # using db aggregate to get average
+
+        welcome_rcs.delay(student_id)
         
         return {
             'student': StudentSerializer(student).data,

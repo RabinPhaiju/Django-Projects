@@ -1,5 +1,28 @@
 
 services:
+  redis:
+    image: redis:7-alpine
+    container_name: rcs_redis
+    ports:
+      - "6379:6379"
+
+  worker_report_card:
+    image: rcs_server:1.0
+    container_name: rcs_celery
+    volumes:
+    - $PWD:/home/app/web
+    working_dir: /home/app/web
+    secrets:
+      - password
+    env_file: .env
+    command: >
+      sh -c "export DB_PASSWORD=$(cat /run/secrets/password) &&
+      celery -A report_card_system.celery:app worker --loglevel=info --queues=report_tasks"
+    depends_on:
+      - redis
+      - db
+      - web
+
   web:
     volumes:
       - $PWD:/home/app/web
@@ -15,6 +38,7 @@ services:
       - .env
     depends_on:
       - db
+      - redis
 
   db:
     image: postgres:15
@@ -46,4 +70,6 @@ services:
 volumes:
   db_data:
 
-  
+secrets:
+  password:
+    file: $PWD/secret

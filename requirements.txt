@@ -14,6 +14,9 @@ django-cors-headers ==4.7.0
 nested-multipart-parser ==1.5.0
 django-import-export ==4.3.9
 
+redis ==6.4.0
+celery ==5.5.3
+
 # 1
 python-frontmatter ==1.1.0
 py-yaml-fixtures == 0.6.2

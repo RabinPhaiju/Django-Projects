@@ -226,3 +226,30 @@ MEDIA_ROOT = BASE_DIR / "mediafiles"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Celery Configuration
+CELERY_BROKER_URL = 'redis://redis:6379/1'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/2'
+
+# Define queues for task types
+CELERY_TASK_QUEUES = {
+    "report_tasks": {"exchange": "report", "routing_key": "report"},
+}
+
+# Default queue
+CELERY_TASK_DEFAULT_QUEUE = "default"
+
+# Timezone
+CELERY_TIMEZONE = "UTC"
+
+# Task result expiration (10 minutes)
+CELERY_RESULT_EXPIRES = 600
+
+# Retry broker connection on startup
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+
+# result serializer
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
