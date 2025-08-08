@@ -29,21 +29,16 @@ def calculate_report_card(report_card):
     subject_averages_json = json.dumps(list(subject_averages),cls=DecimalEncoder)
 
     # Update report card
-    report_card.subject_averages = subject_averages_json
-    report_card.overall_average = overall_average['total_avg']
-    report_card.task_status = ReportCardStatus.COMPLETED
-    report_card.save()
+    # report_card.subject_averages = subject_averages_json
+    # report_card.overall_average = overall_average['total_avg']
+    # report_card.task_status = ReportCardStatus.COMPLETED
+    # report_card.save()
 
     # change other report_card of same person and year's task_status to not_started
-    other_report_cards = ReportCard.objects.filter(
-        student=student,
-        year=year
-    ).exclude(id=report_card.id).all()
-
-    other_report_cards.update(
+    ReportCard.objects.filter(student=student,year=year).update(
         task_status=ReportCardStatus.COMPLETED,
         subject_averages=subject_averages_json,
         overall_average=overall_average['total_avg']
-        )
+    )
 
     return subject_averages_json,overall_average
