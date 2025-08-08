@@ -1,50 +1,12 @@
 **/venv
-<<<<<<< HEAD
 ngrok.exe
 **/uploaded_files/name.txt
 */media/photos/*
 
-<<<<<<< HEAD
 django_venv/
 *.pyc
 **/__pycache__/
-=======
-studybud/base/__pycache__/
-studybud/studybud/__pycache__/
-studybud/base/migrations/__pycache__/
-studybud/base/api/__pycache__/
-studybud/room/__pycache__/
-studybud/room/api/__pycache__/
-studybud/room/migrations/__pycache__/
-url_shortner/chat/migrations/__pycache__/
-report_pro/report_pro/__pycache__/
-report_pro/customers/__pycache__/
-report_pro/customers/migrations/__pycache__/
-report_pro/products/__pycache__/
-report_pro/profiles/__pycache__/
-report_pro/reports/__pycache__/
-report_pro/sales/__pycache__/
-report_pro/profiles/migrations/__pycache__/
-report_pro/reports/migrations/__pycache__/
-report_pro/products/migrations/__pycache__/
-report_pro/sales/migrations/__pycache__/
+
 django_venv/
 *.pyc
-RestApi_Pizza_delivery/pizza_delivery/__pycache__/
-RestApi_Pizza_delivery/authentication/migrations/
-RestApi_Pizza_delivery/authentication/__pycache__/
-RestApi_Pizza_delivery/orders/__pycache__/
-RestApi_Pizza_delivery/orders/migrations/__pycache__/
-<<<<<<< HEAD
->>>>>>> cecd0b3 (added rest pizza api)
-=======
->>>>>>> fed55c3 (git ignire)
->>>>>>> c8e3993 (git ignire)
-=======
-**/__pycache__
 ngrok.exe
-/__pycache__/
-<<<<<<< HEAD
->>>>>>> c296fdb (added django5.1 tutorial)
-=======
->>>>>>> 202b9c5 (added file upload)
