@@ -16,7 +16,7 @@ api_urls = [
     path("", include("apps.student.api.urls")),
     path("", include("apps.subject.api.urls")),
     path("", include("apps.report_card.api.urls")),
-    # path("", include("apps.mark.api.urls")),
+    path("", include("apps.mark.api.urls")),
 ]
 
 urlpatterns = [

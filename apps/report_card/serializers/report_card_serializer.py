@@ -1,12 +1,14 @@
+import json
 from apps.mark.models import Mark
 from apps.mark.serializers.marks_serializer import MarkSerializer
-from apps.report_card.tasks import welcome_rcs
+from apps.report_card.tasks import calculate_report_card_aggregate
+from apps.report_card.utils import calculate_report_card
 from apps.student.models import Student
 from apps.subject.models import Subject
 from rest_framework import serializers
 from django.db.models import Avg,F
 
-from apps.report_card.models import ReportCard, Term
+from apps.report_card.models import ReportCard, ReportCardStatus, Term
 from apps.student.serializers.student_serializer import StudentField, StudentSerializer, StudentSerializerMinimal
 
 class ReportCardSerializer(serializers.ModelSerializer):
@@ -61,6 +63,10 @@ class AddMarksReportCardSerializer(serializers.ModelSerializer):
             Mark.objects.bulk_create(marks_to_create)
         if marks_to_update:
             Mark.objects.bulk_update(marks_to_update, ['score'])
+
+        # trigger celery task for report_card_aggregate
+        report_card.task_status = ReportCardStatus.IN_PROGRESS
+        calculate_report_card_aggregate.delay(report_card.id)
     
         report_card.refresh_from_db()
         return ReportCardSerializer(report_card).data
@@ -83,27 +89,33 @@ class ReportCardStudentYearSerializer(serializers.ModelSerializer):
         
         # Serialize report cards
         report_cards_data = ReportCardSerializer(report_cards, many=True).data
-        
-        # Calculate subject averages
-        subject_averages = Mark.objects.filter(
-            report_card__student=student,
-            report_card__year=year
-        ).values(subjectName=F('subject__name')).annotate(avg_score=Avg('score')) # 
-        
-        # Calculate overall average
-        overall_average = Mark.objects.filter(
-            report_card__student=student,
-            report_card__year=year
-        ).aggregate(total_avg=Avg('score')) # using db aggregate to get average
 
-        welcome_rcs.delay(student_id)
+        # check if report aggregate is already calculated
+        report_card = ReportCard.objects.filter(
+            student=student,
+            year=year,
+            subject_averages__isnull=False,
+            overall_average__gt=0.0,
+            task_status=ReportCardStatus.COMPLETED
+        ).first()
+        if report_card:
+            return {
+                'student': StudentSerializer(student).data,
+                'year': year,
+                'report_cards': report_cards_data,
+                'subject_averages': json.loads(report_card.subject_averages),
+                'overall_average': report_card.overall_average,
+            }
         
+        # Fallback incase report aggregate is not calculated
+        report_card = ReportCard.objects.select_related('student').filter(student=student,year=year).first()
+        sub_avg,overall_avg = calculate_report_card(report_card)
         return {
             'student': StudentSerializer(student).data,
             'year': year,
             'report_cards': report_cards_data,
-            'subject_averages': list(subject_averages),
-            'overall_average': overall_average['total_avg'],
+            'subject_averages': sub_avg,
+            'overall_average': overall_avg,
         }
 
 class ReportCardLoader(serializers.ModelSerializer):

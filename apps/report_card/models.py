@@ -9,6 +9,11 @@ class Term(models.TextChoices):
     Term4 = 'term4', 'Term 4'
     BLANK = '', 'Blank'
 
+class ReportCardStatus(models.TextChoices):
+    COMPLETED = 'COMPLETED', 'Completed'
+    IN_PROGRESS = 'IN_PROGRESS', 'In Progress'
+    NOT_STARTED = 'NOT_STARTED', 'Not Started'
+
 class ReportCard(BaseModel):
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='report_cards')
     term = models.CharField(
@@ -19,6 +24,19 @@ class ReportCard(BaseModel):
     )
     year = models.IntegerField()
 
+    subject_averages = models.JSONField(default=dict, blank=True)
+    overall_average = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        default=0.0,
+        blank=True,
+    )
+    task_status = models.CharField(
+        max_length=20,
+        choices=ReportCardStatus.choices,
+        default=ReportCardStatus.NOT_STARTED,
+        blank=True,
+    )
     class Meta:
         unique_together = ('student', 'term', 'year')
         indexes = [
